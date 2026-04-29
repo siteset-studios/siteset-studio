@@ -21,7 +21,6 @@ jobs:
         with:
           node-version: 20
 
-      # ✅ pnpm via corepack (IMPORTANT FIX)
       - name: Enable Corepack (pnpm)
         run: |
           corepack enable
@@ -30,17 +29,39 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # ✅ Build only frontend (IMPORTANT)
-      - name: Build project
+      - name: Build project (frontend)
         run: |
           cd frontend
           pnpm run build
+
+      # 🔍 Debug (ek baar ke liye — baad me hata sakta hai)
+      - name: Debug folders
+        run: |
+          echo "Root:"
+          ls -la
+          echo "Frontend:"
+          ls -la frontend || true
+          echo "Find dist folders:"
+          find . -type d -name dist
 
       - name: Copy build files to docs
         run: |
           rm -rf docs
           mkdir docs
-          cp -r frontend/dist/* docs/
+
+          if [ -d "frontend/dist" ]; then
+            echo "Using frontend/dist"
+            cp -r frontend/dist/* docs/
+          elif [ -d "dist" ]; then
+            echo "Using root dist"
+            cp -r dist/* docs/
+          elif [ -d "src/frontend/dist" ]; then
+            echo "Using src/frontend/dist"
+            cp -r src/frontend/dist/* docs/
+          else
+            echo "❌ dist folder not found"
+            exit 1
+          fi
 
       - name: Commit and push docs
         run: |
