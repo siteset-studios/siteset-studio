@@ -1,0 +1,479 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-display: "Bricolage Grotesque", sans-serif;
+    --font-body: "General Sans", sans-serif;
+    --font-mono: "Geist Mono", monospace;
+    --radius: 0.75rem;
+
+    /* Light mode (unused — site is dark) */
+    --background: 0.08 0.01 265;
+    --foreground: 0.96 0 0;
+    --card: 0.12 0.025 265;
+    --card-foreground: 0.96 0 0;
+    --popover: 0.14 0.025 265;
+    --popover-foreground: 0.96 0 0;
+
+    --primary: 0.58 0.24 265;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.18 0.02 265;
+    --secondary-foreground: 0.9 0 0;
+    --muted: 0.16 0.015 265;
+    --muted-foreground: 0.6 0.01 265;
+
+    --accent: 0.62 0.26 265;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.22 0.03 265;
+    --input: 0.18 0.02 265;
+    --ring: 0.58 0.22 265;
+
+    --chart-1: 0.58 0.22 265;
+    --chart-2: 0.65 0.18 30;
+    --chart-3: 0.72 0.12 142;
+    --chart-4: 0.6 0.14 192;
+    --chart-5: 0.55 0.16 256;
+
+    --sidebar: 0.1 0.02 265;
+    --sidebar-foreground: 0.96 0 0;
+    --sidebar-primary: 0.58 0.22 265;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.18 0.02 265;
+    --sidebar-accent-foreground: 0.9 0 0;
+    --sidebar-border: 0.22 0.03 265;
+    --sidebar-ring: 0.58 0.22 265;
+
+    --gradient-hero: linear-gradient(
+      135deg,
+      oklch(0.06 0.02 265) 0%,
+      oklch(0.1 0.04 265) 50%,
+      oklch(0.07 0.02 265) 100%
+    );
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.58 0.24 265),
+      oklch(0.45 0.2 265)
+    );
+    --gradient-subtle: linear-gradient(
+      135deg,
+      oklch(0.62 0.26 265 / 0.1),
+      oklch(0.08 0 0 / 0.04)
+    );
+    --gradient-glow: radial-gradient(
+      ellipse at center,
+      oklch(0.62 0.26 265 / 0.3) 0%,
+      transparent 70%
+    );
+  }
+
+  .dark {
+    --background: 0.07 0.01 265;
+    --foreground: 0.96 0 0;
+    --card: 0.11 0.025 265;
+    --card-foreground: 0.96 0 0;
+    --popover: 0.13 0.025 265;
+    --popover-foreground: 0.96 0 0;
+
+    --primary: 0.62 0.26 265;
+    --primary-foreground: 0.98 0 0;
+
+    --secondary: 0.17 0.02 265;
+    --secondary-foreground: 0.9 0 0;
+    --muted: 0.15 0.015 265;
+    --muted-foreground: 0.58 0.01 265;
+
+    --accent: 0.65 0.28 265;
+    --accent-foreground: 0.98 0 0;
+
+    --destructive: 0.65 0.19 22;
+    --destructive-foreground: 0.08 0 0;
+
+    --border: 0.21 0.03 265;
+    --input: 0.17 0.02 265;
+    --ring: 0.6 0.23 265;
+
+    --chart-1: 0.6 0.23 265;
+    --chart-2: 0.72 0.2 30;
+    --chart-3: 0.78 0.14 142;
+    --chart-4: 0.68 0.16 192;
+    --chart-5: 0.62 0.18 256;
+
+    --sidebar: 0.1 0.02 265;
+    --sidebar-foreground: 0.96 0 0;
+    --sidebar-primary: 0.6 0.23 265;
+    --sidebar-primary-foreground: 0.98 0 0;
+    --sidebar-accent: 0.17 0.02 265;
+    --sidebar-accent-foreground: 0.9 0 0;
+    --sidebar-border: 0.21 0.03 265;
+    --sidebar-ring: 0.6 0.23 265;
+
+    --gradient-hero: linear-gradient(
+      135deg,
+      oklch(0.06 0.02 265) 0%,
+      oklch(0.1 0.04 265) 50%,
+      oklch(0.07 0.02 265) 100%
+    );
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.62 0.26 265),
+      oklch(0.48 0.22 265)
+    );
+    --gradient-subtle: linear-gradient(
+      135deg,
+      oklch(0.65 0.28 265 / 0.12),
+      oklch(0.08 0 0 / 0.05)
+    );
+    --gradient-glow: radial-gradient(
+      ellipse at center,
+      oklch(0.65 0.28 265 / 0.32) 0%,
+      transparent 70%
+    );
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque.woff2") format("woff2");
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  .gradient-glow {
+    background: var(--gradient-glow);
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  }
+
+  .shadow-subtle {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+
+  .glow-primary {
+    box-shadow: 0 0 40px oklch(var(--primary) / 0.6), 0 0 80px
+      oklch(var(--primary) / 0.3);
+  }
+
+  .glow-btn {
+    box-shadow: 0 0 24px oklch(var(--primary) / 0.5), 0 4px 16px
+      rgba(0, 0, 0, 0.3);
+  }
+
+  .glow-btn:hover {
+    box-shadow: 0 0 40px oklch(var(--primary) / 0.7), 0 8px 24px
+      rgba(0, 0, 0, 0.4);
+  }
+
+  .glass {
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    background: oklch(var(--card) / 0.7);
+    border: 1px solid oklch(var(--border) / 0.3);
+  }
+
+  .glass-navbar {
+    backdrop-filter: blur(20px) saturate(200%);
+    -webkit-backdrop-filter: blur(20px) saturate(200%);
+    background: oklch(0.07 0.01 265 / 0.85);
+    border-bottom: 1px solid oklch(var(--border) / 0.2);
+  }
+
+  .text-balance-hero {
+    text-wrap: balance;
+  }
+
+  .floating-shape {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-shape-slow {
+    animation: float 9s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+
+  .floating-shape-fast {
+    animation: float 4s ease-in-out infinite;
+    animation-delay: -1.5s;
+  }
+
+  .cursor-glow {
+    pointer-events: none;
+    position: fixed;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    z-index: 9999;
+    transition: transform 0.15s ease-out, opacity 0.2s ease;
+    filter: blur(1px);
+  }
+
+  /* Parallax 3D depth transforms */
+  .parallax-depth {
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .parallax-layer {
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  /* Scroll reveal animations */
+  .reveal-fade {
+    opacity: 0;
+    animation: revealFade 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.88);
+    animation: revealScale 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+
+  @keyframes revealFade {
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes revealScale {
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Section alternating backgrounds */
+  .section-dark {
+    background: oklch(0.07 0.01 265);
+  }
+
+  .section-card {
+    background: oklch(0.1 0.02 265);
+  }
+
+  .section-accent {
+    background: linear-gradient(
+      135deg,
+      oklch(0.09 0.02 265) 0%,
+      oklch(0.12 0.03 265) 100%
+    );
+  }
+
+  /* ── Scroll-triggered reveal ── */
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(28px);
+    animation: revealUp 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(-28px);
+    animation: revealRight 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(28px);
+    animation: revealLeft 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  @keyframes revealUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes revealRight {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes revealLeft {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* ── 3D card tilt perspective ── */
+  .perspective-card {
+    perspective: 900px;
+  }
+  .tilt-inner {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* ── Shimmer loading skeleton ── */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+    background: oklch(var(--muted));
+  }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      oklch(var(--card) / 0.6) 50%,
+      transparent 100%
+    );
+    animation: shimmerSlide 1.4s infinite;
+  }
+  @keyframes shimmerSlide {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(200%);
+    }
+  }
+
+  /* ── Pulsing glow ring ── */
+  .pulse-ring {
+    animation: pulseRing 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  @keyframes pulseRing {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 oklch(var(--primary) / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 0 10px oklch(var(--primary) / 0);
+    }
+  }
+
+  /* ── Stagger delay helpers ── */
+  .delay-100 {
+    animation-delay: 100ms;
+  }
+  .delay-200 {
+    animation-delay: 200ms;
+  }
+  .delay-300 {
+    animation-delay: 300ms;
+  }
+  .delay-400 {
+    animation-delay: 400ms;
+  }
+  .delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* ── Float keyframe (referenced by floating-shape) ── */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-14px) rotate(2deg);
+    }
+    66% {
+      transform: translateY(-8px) rotate(-1deg);
+    }
+  }
+
+  /* ── Underline reveal (used in footer links) ── */
+  .underline-reveal {
+    position: relative;
+    display: inline-block;
+  }
+  .underline-reveal::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: oklch(var(--primary));
+    transition: width 0.3s ease-out;
+  }
+  .underline-reveal:hover::after {
+    width: 100%;
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: oklch(0.08 0.01 265);
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.25 0.04 265);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.4 0.1 265);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-shape,
+  .floating-shape-slow,
+  .floating-shape-fast {
+    animation: none;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
