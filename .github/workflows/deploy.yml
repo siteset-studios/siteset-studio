@@ -19,19 +19,21 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: 'pnpm'
+          node-version: 20
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      # ✅ pnpm via corepack (IMPORTANT FIX)
+      - name: Enable Corepack (pnpm)
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
+      # ✅ Build only frontend (IMPORTANT)
       - name: Build project
         run: |
           cd frontend
-          pnpm install
           pnpm run build
 
       - name: Copy build files to docs
