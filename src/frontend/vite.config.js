@@ -13,16 +13,21 @@ process.env.STORAGE_GATEWAY_URL =
   process.env.STORAGE_GATEWAY_URL || "https://blob.caffeine.ai";
 
 export default defineConfig({
-  base: '/siteset-studio/',
+  // 🔥 FIX (GitHub Pages ke liye)
+  base: "./",
+
   logLevel: "error",
+
   build: {
     emptyOutDir: true,
     sourcemap: false,
     minify: false,
   },
+
   css: {
     postcss: "./postcss.config.js",
   },
+
   optimizeDeps: {
     esbuildOptions: {
       define: {
@@ -30,6 +35,7 @@ export default defineConfig({
       },
     },
   },
+
   server: {
     proxy: {
       "/api": {
@@ -38,6 +44,7 @@ export default defineConfig({
       },
     },
   },
+
   plugins: [
     environment("all", { prefix: "CANISTER_" }),
     environment("all", { prefix: "DFX_" }),
@@ -45,6 +52,7 @@ export default defineConfig({
     environment(["STORAGE_GATEWAY_URL"]),
     react(),
   ],
+
   resolve: {
     alias: [
       {
@@ -56,6 +64,6 @@ export default defineConfig({
         replacement: fileURLToPath(new URL("./src", import.meta.url)),
       },
     ],
-    dedupe: ["@dfinity/agent"]
+    dedupe: ["@dfinity/agent"],
   },
 });
