@@ -14,6 +14,9 @@ const NAV_LINKS: NavLink[] = [
 
 const SECTION_IDS = ["services", "portfolio", "pricing", "contact"];
 
+// Use import.meta.env.BASE_URL so it works in both dev and production builds
+const logoSrc = `${import.meta.env.BASE_URL}assets/siteset-logo-user.png`;
+
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -49,7 +52,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 lg:h-[72px]">
-          {/* Logo + Brand Name — top-left */}
+          {/* Logo + Brand Name */}
           <button
             type="button"
             className="flex items-center gap-3 bg-transparent border-0 p-0 cursor-pointer"
@@ -63,10 +66,14 @@ export default function Navbar() {
               transition={{ duration: 0.2 }}
             >
               <img
-                src="/assets/siteset-logo-user.png"
+                src={logoSrc}
                 alt="Siteset Studios logo"
                 className="h-9 w-auto object-contain flex-shrink-0"
                 style={{ maxWidth: "44px" }}
+                onError={(e) => {
+                  // fallback: hide broken image
+                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                }}
               />
               <span className="text-[17px] sm:text-[19px] font-bold text-foreground tracking-tight leading-none">
                 Siteset Studios
@@ -106,9 +113,7 @@ export default function Navbar() {
                   <motion.span
                     layoutId="nav-indicator"
                     className="absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary"
-                    style={{
-                      boxShadow: "0 0 6px oklch(0.58 0.22 265 / 0.8)",
-                    }}
+                    style={{ boxShadow: "0 0 6px oklch(0.58 0.22 265 / 0.8)" }}
                   />
                 )}
               </button>

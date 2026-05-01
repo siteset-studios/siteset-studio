@@ -6788,7 +6788,7 @@ function mergeLoginOptions(loginOptions, otherLoginOptions) {
   };
 }
 const ONE_HOUR_IN_NANOSECONDS = BigInt(36e11);
-const DEFAULT_IDENTITY_PROVIDER = "https://identity.internetcomputer.org/";
+const DEFAULT_IDENTITY_PROVIDER = "https://id.ai";
 const InternetIdentityReactContext = reactExports.createContext(void 0);
 async function createAuthClient(createOptions) {
   const config = await loadConfig();
@@ -19159,17 +19159,17 @@ function assignKeyAndIndex(index2, state) {
 }
 function createBrowserHistory(opts) {
   var _a2, _b2;
-  const win = (opts == null ? void 0 : opts.window) ?? (typeof document !== "undefined" ? window : void 0);
+  const win = typeof document !== "undefined" ? window : void 0;
   const originalPushState = win.history.pushState;
   const originalReplaceState = win.history.replaceState;
   let blockers = [];
   const _getBlockers = () => blockers;
   const _setBlockers = (newBlockers) => blockers = newBlockers;
-  const createHref = (opts == null ? void 0 : opts.createHref) ?? ((path) => path);
-  const parseLocation = (opts == null ? void 0 : opts.parseLocation) ?? (() => parseHref(
+  const createHref = (path) => path;
+  const parseLocation = () => parseHref(
     `${win.location.pathname}${win.location.search}${win.location.hash}`,
     win.history.state
-  ));
+  );
   if (!((_a2 = win.history.state) == null ? void 0 : _a2.__TSR_key) && !((_b2 = win.history.state) == null ? void 0 : _b2.key)) {
     const addedKey = createRandomKey();
     win.history.replaceState(
@@ -19343,22 +19343,6 @@ function createBrowserHistory(opts) {
     return res;
   };
   return history;
-}
-function createHashHistory(opts) {
-  const win = typeof document !== "undefined" ? window : void 0;
-  return createBrowserHistory({
-    window: win,
-    parseLocation: () => {
-      const hashSplit = win.location.hash.split("#").slice(1);
-      const pathPart = hashSplit[0] ?? "/";
-      const searchPart = win.location.search;
-      const hashEntries = hashSplit.slice(1);
-      const hashPart = hashEntries.length === 0 ? "" : `#${hashEntries.join("#")}`;
-      const hashHref = `${pathPart}${searchPart}${hashPart}`;
-      return parseHref(hashHref, win.history.state);
-    },
-    createHref: (href) => `${win.location.pathname}${win.location.search}#${href}`
-  });
 }
 function createMemoryHistory(opts = {
   initialEntries: ["/"]
@@ -26846,7 +26830,7 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$s = [
+const __iconNode$t = [
   [
     "path",
     {
@@ -26856,23 +26840,34 @@ const __iconNode$s = [
   ],
   ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
 ];
-const Award = createLucideIcon("award", __iconNode$s);
+const Award = createLucideIcon("award", __iconNode$t);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$r = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
-const Check = createLucideIcon("check", __iconNode$r);
+const __iconNode$s = [["path", { d: "M20 6 9 17l-5-5", key: "1gmf2c" }]];
+const Check = createLucideIcon("check", __iconNode$s);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$q = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
-const ChevronDown = createLucideIcon("chevron-down", __iconNode$q);
+const __iconNode$r = [["path", { d: "m6 9 6 6 6-6", key: "qrunsl" }]];
+const ChevronDown = createLucideIcon("chevron-down", __iconNode$r);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$q = [
+  ["path", { d: "M21.801 10A10 10 0 1 1 17 3.335", key: "yps3ct" }],
+  ["path", { d: "m9 11 3 3L22 4", key: "1pflzl" }]
+];
+const CircleCheckBig = createLucideIcon("circle-check-big", __iconNode$q);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26928,10 +26923,29 @@ const IndianRupee = createLucideIcon("indian-rupee", __iconNode$m);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$l = [
-  ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
-  ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
+  [
+    "path",
+    {
+      d: "M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z",
+      key: "zw3jo"
+    }
+  ],
+  [
+    "path",
+    {
+      d: "M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12",
+      key: "1wduqc"
+    }
+  ],
+  [
+    "path",
+    {
+      d: "M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17",
+      key: "kqbvx6"
+    }
+  ]
 ];
-const Mail = createLucideIcon("mail", __iconNode$l);
+const Layers = createLucideIcon("layers", __iconNode$l);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26939,6 +26953,17 @@ const Mail = createLucideIcon("mail", __iconNode$l);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$k = [
+  ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
+  ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
+];
+const Mail = createLucideIcon("mail", __iconNode$k);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$j = [
   [
     "path",
     {
@@ -26948,19 +26973,7 @@ const __iconNode$k = [
   ],
   ["circle", { cx: "12", cy: "10", r: "3", key: "ilqhr7" }]
 ];
-const MapPin = createLucideIcon("map-pin", __iconNode$k);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$j = [
-  ["path", { d: "M4 12h16", key: "1lakjw" }],
-  ["path", { d: "M4 18h16", key: "19g7jn" }],
-  ["path", { d: "M4 6h16", key: "1o0s65" }]
-];
-const Menu = createLucideIcon("menu", __iconNode$j);
+const MapPin = createLucideIcon("map-pin", __iconNode$j);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26968,9 +26981,11 @@ const Menu = createLucideIcon("menu", __iconNode$j);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$i = [
-  ["path", { d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z", key: "vv11sd" }]
+  ["path", { d: "M4 12h16", key: "1lakjw" }],
+  ["path", { d: "M4 18h16", key: "19g7jn" }],
+  ["path", { d: "M4 6h16", key: "1o0s65" }]
 ];
-const MessageCircle = createLucideIcon("message-circle", __iconNode$i);
+const Menu = createLucideIcon("menu", __iconNode$i);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26978,19 +26993,9 @@ const MessageCircle = createLucideIcon("message-circle", __iconNode$i);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$h = [
-  [
-    "path",
-    {
-      d: "M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z",
-      key: "e79jfc"
-    }
-  ],
-  ["circle", { cx: "13.5", cy: "6.5", r: ".5", fill: "currentColor", key: "1okk4w" }],
-  ["circle", { cx: "17.5", cy: "10.5", r: ".5", fill: "currentColor", key: "f64h9f" }],
-  ["circle", { cx: "6.5", cy: "12.5", r: ".5", fill: "currentColor", key: "qy21gx" }],
-  ["circle", { cx: "8.5", cy: "7.5", r: ".5", fill: "currentColor", key: "fotxhn" }]
+  ["path", { d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z", key: "vv11sd" }]
 ];
-const Palette = createLucideIcon("palette", __iconNode$h);
+const MessageCircle = createLucideIcon("message-circle", __iconNode$h);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -36601,6 +36606,7 @@ const NAV_LINKS = [
   { label: "Contact", href: "#contact" }
 ];
 const SECTION_IDS = ["services", "portfolio", "pricing", "contact"];
+const logoSrc = `${"/siteset-studio/"}assets/siteset-logo-user.png`;
 function Navbar() {
   const [isOpen, setIsOpen] = reactExports.useState(false);
   const [scrolled, setScrolled] = reactExports.useState(false);
@@ -36648,10 +36654,13 @@ function Navbar() {
                     /* @__PURE__ */ jsxRuntimeExports.jsx(
                       "img",
                       {
-                        src: "/assets/siteset-logo-user.png",
+                        src: logoSrc,
                         alt: "Siteset Studios logo",
                         className: "h-9 w-auto object-contain flex-shrink-0",
-                        style: { maxWidth: "44px" }
+                        style: { maxWidth: "44px" },
+                        onError: (e) => {
+                          e.currentTarget.style.display = "none";
+                        }
                       }
                     ),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-[17px] sm:text-[19px] font-bold text-foreground tracking-tight leading-none", children: "Siteset Studios" })
@@ -36689,9 +36698,7 @@ function Navbar() {
                       {
                         layoutId: "nav-indicator",
                         className: "absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary",
-                        style: {
-                          boxShadow: "0 0 6px oklch(0.58 0.22 265 / 0.8)"
-                        }
+                        style: { boxShadow: "0 0 6px oklch(0.58 0.22 265 / 0.8)" }
                       }
                     )
                   ]
@@ -37893,12 +37900,12 @@ function BeforeAfterSlider() {
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             motion.div,
             {
-              initial: { opacity: 0, y: 40, scale: 0.97 },
-              animate: isVisible ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.97 },
+              initial: { opacity: 0, y: 40, scale: 0.97, rotateX: 8 },
+              animate: isVisible ? { opacity: 1, y: 0, scale: 1, rotateX: 0 } : { opacity: 0, y: 40, scale: 0.97, rotateX: 8 },
               transition: { duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] },
               className: "relative mx-auto max-w-3xl",
               "data-ocid": "before_after.slider",
-              style: { perspective: "1200px" },
+              style: { perspective: "1400px", transformStyle: "preserve-3d" },
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(
                   "div",
@@ -37950,9 +37957,9 @@ function BeforeAfterSlider() {
                               style: {
                                 left: `${sliderPos}%`,
                                 transform: "translateX(-50%)",
-                                width: "2px",
-                                background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 90%, transparent 100%)",
-                                boxShadow: "0 0 14px 3px rgba(255,255,255,0.35), -4px 0 12px rgba(239,68,68,0.2), 4px 0 12px rgba(212,168,23,0.2)"
+                                width: "3px",
+                                background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.95) 10%, rgba(255,255,255,0.95) 90%, transparent 100%)",
+                                boxShadow: "0 0 20px 4px rgba(255,255,255,0.5), -6px 0 18px rgba(239,68,68,0.25), 6px 0 18px rgba(212,168,23,0.25)"
                               }
                             }
                           ),
@@ -38066,10 +38073,42 @@ function BeforeAfterSlider() {
 }
 const WHATSAPP_URL$1 = "https://wa.me/919330138050?text=Hi%20Siteset%20Studio!";
 const trustItems$1 = [
-  { icon: Clock, text: "Live in 48 Hours" },
+  { icon: Clock, text: "Live in 2–7 Days" },
   { icon: Shield, text: "100% Satisfaction" },
   { icon: IndianRupee, text: "No Hidden Fees" },
   { icon: Star, text: "50+ Happy Clients" }
+];
+const BG_SHAPES = [
+  {
+    id: "s1",
+    type: "orb",
+    size: 400,
+    x: "65%",
+    y: "10%",
+    color: "oklch(0.62 0.26 265 / 0.35)",
+    blur: 80,
+    cls: "float-3d-alt"
+  },
+  {
+    id: "s2",
+    type: "orb",
+    size: 280,
+    x: "-5%",
+    y: "40%",
+    color: "oklch(0.55 0.2 265 / 0.25)",
+    blur: 60,
+    cls: "float-3d"
+  },
+  {
+    id: "s3",
+    type: "orb",
+    size: 180,
+    x: "40%",
+    y: "70%",
+    color: "oklch(0.72 0.2 285 / 0.2)",
+    blur: 50,
+    cls: "floating-shape-slow"
+  }
 ];
 function FinalCTA() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -38078,9 +38117,25 @@ function FinalCTA() {
       id: "contact",
       className: "relative py-32 overflow-hidden",
       style: {
-        background: "linear-gradient(135deg, oklch(0.06 0.025 265) 0%, oklch(0.09 0.035 265) 40%, oklch(0.07 0.02 265) 100%)"
+        background: "linear-gradient(135deg, oklch(0.06 0.025 265) 0%, oklch(0.09 0.035 265) 40%, oklch(0.07 0.02 265) 100%)",
+        perspective: "1500px"
       },
       children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute inset-0 pointer-events-none", "aria-hidden": "true", children: BG_SHAPES.map((s) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: `absolute rounded-full ${s.cls}`,
+            style: {
+              width: s.size,
+              height: s.size,
+              left: s.x,
+              top: s.y,
+              background: `radial-gradient(circle at 35% 35%, ${s.color}, transparent 70%)`,
+              filter: `blur(${s.blur}px)`
+            }
+          },
+          s.id
+        )) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 pointer-events-none", "aria-hidden": "true", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             motion.div,
@@ -38094,34 +38149,6 @@ function FinalCTA() {
                 repeat: Number.POSITIVE_INFINITY,
                 duration: 5,
                 ease: "easeInOut"
-              }
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            motion.div,
-            {
-              className: "absolute top-0 right-0 w-72 h-72 rounded-full blur-[100px]",
-              style: { background: "oklch(0.65 0.2 250 / 0.2)" },
-              animate: { scale: [1, 1.15, 1], opacity: [0.2, 0.35, 0.2] },
-              transition: {
-                repeat: Number.POSITIVE_INFINITY,
-                duration: 7,
-                ease: "easeInOut",
-                delay: 1
-              }
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            motion.div,
-            {
-              className: "absolute bottom-0 left-10 w-56 h-56 rounded-full blur-[80px]",
-              style: { background: "oklch(0.55 0.2 280 / 0.18)" },
-              animate: { scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] },
-              transition: {
-                repeat: Number.POSITIVE_INFINITY,
-                duration: 6,
-                ease: "easeInOut",
-                delay: 2
               }
             }
           ),
@@ -38147,7 +38174,7 @@ function FinalCTA() {
               className: "inline-flex items-center gap-2 bg-primary/10 border border-primary/30 rounded-full px-5 py-2 mb-8",
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-2 h-2 rounded-full bg-primary animate-ping" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-primary text-sm font-bold tracking-wide", children: "Your Website Live in 48 Hours" })
+                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-primary text-sm font-bold tracking-wide", children: "Your Website Live in 2–7 Days" })
               ]
             }
           ),
@@ -38172,7 +38199,7 @@ function FinalCTA() {
                       WebkitTextFillColor: "transparent",
                       backgroundClip: "text"
                     },
-                    children: "Online in 48 Hours"
+                    children: "Online Today"
                   }
                 )
               ]
@@ -38186,7 +38213,7 @@ function FinalCTA() {
               whileInView: { opacity: 1, y: 0 },
               viewport: { once: true },
               transition: { duration: 0.5, delay: 0.2 },
-              children: "Start getting more customers today. No technical knowledge needed — we build it, you grow. Starting at just ₹8,999."
+              children: "Start getting more customers today. No technical knowledge needed — we build it, you grow. Starting at just ₹3,999."
             }
           ),
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -38198,18 +38225,36 @@ function FinalCTA() {
               viewport: { once: true },
               transition: { duration: 0.5, delay: 0.3 },
               children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  Button,
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  motion.div,
                   {
-                    type: "button",
-                    "data-ocid": "cta.get_free_demo_button",
-                    size: "lg",
-                    className: "gradient-primary text-primary-foreground glow-btn border-0 font-bold text-base px-8 py-6 rounded-xl hover:opacity-90 transition-smooth group min-w-[200px]",
-                    onClick: () => window.open(WHATSAPP_URL$1, "_blank"),
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Rocket, { className: "w-5 h-5 mr-2 group-hover:translate-x-0.5 transition-transform" }),
-                      "Get Free Demo"
-                    ]
+                    animate: {
+                      boxShadow: [
+                        "0 0 20px oklch(0.62 0.26 265 / 0.4)",
+                        "0 0 50px oklch(0.62 0.26 265 / 0.7)",
+                        "0 0 20px oklch(0.62 0.26 265 / 0.4)"
+                      ]
+                    },
+                    transition: {
+                      repeat: Number.POSITIVE_INFINITY,
+                      duration: 2.5,
+                      ease: "easeInOut"
+                    },
+                    className: "rounded-xl",
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                      Button,
+                      {
+                        type: "button",
+                        "data-ocid": "cta.get_free_demo_button",
+                        size: "lg",
+                        className: "gradient-primary text-primary-foreground glow-btn border-0 font-bold text-base px-8 py-6 rounded-xl hover:opacity-90 transition-smooth group min-w-[200px]",
+                        onClick: () => window.open(WHATSAPP_URL$1, "_blank"),
+                        children: [
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(Rocket, { className: "w-5 h-5 mr-2 group-hover:translate-x-0.5 transition-transform" }),
+                          "Get Free Demo"
+                        ]
+                      }
+                    )
                   }
                 ),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -38239,9 +38284,15 @@ function FinalCTA() {
               viewport: { once: true },
               transition: { duration: 0.5, delay: 0.5 },
               children: trustItems$1.map(({ icon: Icon2, text }) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                "div",
+                motion.div,
                 {
-                  className: "flex items-center gap-2 bg-white/[0.04] border border-white/[0.07] rounded-full px-4 py-2",
+                  className: "flex items-center gap-2 rounded-full px-4 py-2",
+                  whileHover: { scale: 1.05, y: -2 },
+                  style: {
+                    background: "oklch(0.12 0.03 265 / 0.6)",
+                    border: "1px solid oklch(0.62 0.26 265 / 0.15)",
+                    backdropFilter: "blur(12px)"
+                  },
                   children: [
                     /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "w-4 h-4 text-primary" }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground text-sm font-medium", children: text })
@@ -38381,6 +38432,7 @@ function IconBase(props) {
 function SiWhatsapp(props) {
   return GenIcon({ "attr": { "role": "img", "viewBox": "0 0 24 24" }, "child": [{ "tag": "path", "attr": { "d": "M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" }, "child": [] }] })(props);
 }
+const footerLogoSrc = `${"/siteset-studio/"}assets/generated/siteset-studio-logo-transparent.dim_200x200.png`;
 function Footer() {
   const year = (/* @__PURE__ */ new Date()).getFullYear();
   const caffeineUrl = `https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(
@@ -38428,9 +38480,12 @@ function Footer() {
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "img",
                     {
-                      src: "/assets/generated/siteset-studio-logo-transparent.dim_200x200.png",
+                      src: footerLogoSrc,
                       alt: "Siteset Studios logo",
-                      className: "h-10 w-10 object-contain group-hover:scale-105 transition-transform duration-200"
+                      className: "h-10 w-10 object-contain group-hover:scale-105 transition-transform duration-200",
+                      onError: (e) => {
+                        e.currentTarget.style.display = "none";
+                      }
                     }
                   ),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-lg font-bold text-foreground tracking-tight", children: "Siteset Studios" })
@@ -38539,7 +38594,6 @@ const trustItems = [
   { icon: Smartphone, label: "Starting from", desc: "₹3,999" }
 ];
 const shapes = [
-  // Large blurred orb — far back layer (slow)
   {
     id: "orb1",
     type: "orb",
@@ -38554,7 +38608,6 @@ const shapes = [
     color: "oklch(0.62 0.26 265 / 0.6)",
     initDelay: 0.2
   },
-  // Medium orb bottom-left (mid layer)
   {
     id: "orb2",
     type: "orb",
@@ -38569,7 +38622,6 @@ const shapes = [
     color: "oklch(0.55 0.2 265 / 0.45)",
     initDelay: 0.5
   },
-  // Cube wireframe — close layer
   {
     id: "cube1",
     type: "cube",
@@ -38579,12 +38631,11 @@ const shapes = [
     depthX: 70,
     depthY: 44,
     depthRot: 18,
-    cls: "floating-shape",
+    cls: "float-3d",
     opacity: 0.45,
     blur: 0,
     initDelay: 0.7
   },
-  // Ring — close layer
   {
     id: "ring1",
     type: "ring",
@@ -38594,12 +38645,11 @@ const shapes = [
     depthX: 90,
     depthY: 55,
     depthRot: 22,
-    cls: "floating-shape-fast",
+    cls: "float-3d-fast",
     opacity: 0.38,
     blur: 0,
     initDelay: 0.9
   },
-  // Small cube — foreground
   {
     id: "cube2",
     type: "cube",
@@ -38609,12 +38659,11 @@ const shapes = [
     depthX: 110,
     depthY: 70,
     depthRot: 28,
-    cls: "floating-shape-fast",
+    cls: "float-3d-fast",
     opacity: 0.35,
     blur: 0,
     initDelay: 1.1
   },
-  // Tiny orb accent
   {
     id: "orb3",
     type: "orb",
@@ -38623,13 +38672,12 @@ const shapes = [
     y: "10%",
     depthX: 100,
     depthY: 62,
-    cls: "floating-shape",
+    cls: "float-3d",
     opacity: 0.22,
     blur: 20,
     color: "oklch(0.7 0.22 265 / 0.5)",
     initDelay: 1.2
   },
-  // Ring bottom-right
   {
     id: "ring2",
     type: "ring",
@@ -38643,6 +38691,49 @@ const shapes = [
     opacity: 0.3,
     blur: 0,
     initDelay: 1.4
+  },
+  // 3 new shapes
+  {
+    id: "torus1",
+    type: "torus",
+    size: 100,
+    x: "8%",
+    y: "70%",
+    depthX: 60,
+    depthY: 40,
+    depthRot: 20,
+    cls: "float-3d-alt",
+    opacity: 0.28,
+    blur: 0,
+    initDelay: 1.6
+  },
+  {
+    id: "diamond1",
+    type: "diamond",
+    size: 80,
+    x: "45%",
+    y: "5%",
+    depthX: 85,
+    depthY: 55,
+    depthRot: 30,
+    cls: "float-3d-fast",
+    opacity: 0.32,
+    blur: 0,
+    initDelay: 1.8
+  },
+  {
+    id: "grid1",
+    type: "gridplane",
+    size: 200,
+    x: "30%",
+    y: "60%",
+    depthX: 50,
+    depthY: 35,
+    depthRot: 0,
+    cls: "float-3d-alt",
+    opacity: 0.12,
+    blur: 0,
+    initDelay: 2
   }
 ];
 const headlineWords = [
@@ -38659,20 +38750,15 @@ const gradientTextStyle = {
   WebkitTextFillColor: "transparent",
   backgroundClip: "text"
 };
-function WireframeCube({
-  size,
-  opacity
-}) {
+function WireframeCube({ size, opacity }) {
   const s = size;
   const d = s * 0.32;
   const strokeColor = "oklch(0.72 0.22 265)";
   const pts = {
-    // front face
     tfl: [s * 0.08, s * 0.08],
     tfr: [s * 0.68, s * 0.08],
     bfl: [s * 0.08, s * 0.68],
     bfr: [s * 0.68, s * 0.68],
-    // back face (offset)
     tbl: [s * 0.08 + d, s * 0.08 - d * 0.6],
     tbr: [s * 0.68 + d, s * 0.08 - d * 0.6],
     bbl: [s * 0.08 + d, s * 0.68 - d * 0.6],
@@ -38701,7 +38787,7 @@ function WireframeCube({
       fill: "none",
       style: { opacity },
       "aria-hidden": "true",
-      children: lines.map(([a, b], i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+      children: lines.map(([a, b]) => /* @__PURE__ */ jsxRuntimeExports.jsx(
         "line",
         {
           x1: a[0],
@@ -38712,15 +38798,12 @@ function WireframeCube({
           strokeWidth: size > 80 ? 1.2 : 0.9,
           strokeOpacity: 0.75
         },
-        i
+        `${a[0]}-${a[1]}-${b[0]}-${b[1]}`
       ))
     }
   );
 }
-function RingShape({
-  size,
-  opacity
-}) {
+function RingShape({ size, opacity }) {
   const cx2 = size / 2;
   const cy = size / 2;
   const rx = size * 0.42;
@@ -38773,6 +38856,146 @@ function RingShape({
           }
         )
       ]
+    }
+  );
+}
+function TorusShape({ size, opacity }) {
+  const cx2 = size / 2;
+  const cy = size / 2;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "svg",
+    {
+      width: size,
+      height: size,
+      viewBox: `0 0 ${size} ${size}`,
+      fill: "none",
+      style: { opacity },
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "ellipse",
+          {
+            cx: cx2,
+            cy,
+            rx: size * 0.38,
+            ry: size * 0.38,
+            stroke: "oklch(0.75 0.18 285)",
+            strokeWidth: "1.2",
+            strokeOpacity: "0.7",
+            fill: "none"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "ellipse",
+          {
+            cx: cx2,
+            cy,
+            rx: size * 0.22,
+            ry: size * 0.22,
+            stroke: "oklch(0.65 0.22 285)",
+            strokeWidth: "0.8",
+            strokeOpacity: "0.4",
+            fill: "none"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "ellipse",
+          {
+            cx: cx2,
+            cy,
+            rx: size * 0.38,
+            ry: size * 0.12,
+            stroke: "oklch(0.72 0.2 285)",
+            strokeWidth: "0.9",
+            strokeOpacity: "0.5",
+            fill: "none",
+            strokeDasharray: "4 3"
+          }
+        )
+      ]
+    }
+  );
+}
+function DiamondShape({ size, opacity }) {
+  const s = size;
+  const h = s / 2;
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "svg",
+    {
+      width: s,
+      height: s,
+      viewBox: `0 0 ${s} ${s}`,
+      fill: "none",
+      style: { opacity },
+      "aria-hidden": "true",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "polygon",
+          {
+            points: `${h},4 ${s - 4},${h} ${h},${s - 4} 4,${h}`,
+            stroke: "oklch(0.78 0.2 60)",
+            strokeWidth: "1.2",
+            strokeOpacity: "0.7",
+            fill: "oklch(0.78 0.2 60 / 0.05)"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "polygon",
+          {
+            points: `${h},${s * 0.2} ${s * 0.8},${h} ${h},${s * 0.8} ${s * 0.2},${h}`,
+            stroke: "oklch(0.85 0.18 60)",
+            strokeWidth: "0.8",
+            strokeOpacity: "0.4",
+            fill: "none"
+          }
+        )
+      ]
+    }
+  );
+}
+function GridPlane({ size, opacity }) {
+  const lines = [];
+  const step = size / 5;
+  for (let i = 0; i <= 5; i++) {
+    lines.push(
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "line",
+        {
+          x1: "0",
+          y1: i * step,
+          x2: size,
+          y2: i * step,
+          stroke: "oklch(0.62 0.26 265)",
+          strokeWidth: "0.6",
+          strokeOpacity: "0.5"
+        },
+        `h${i}`
+      ),
+      /* @__PURE__ */ jsxRuntimeExports.jsx(
+        "line",
+        {
+          x1: i * step,
+          y1: "0",
+          x2: i * step,
+          y2: size,
+          stroke: "oklch(0.62 0.26 265)",
+          strokeWidth: "0.6",
+          strokeOpacity: "0.5"
+        },
+        `v${i}`
+      )
+    );
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    "svg",
+    {
+      width: size,
+      height: size,
+      viewBox: `0 0 ${size} ${size}`,
+      fill: "none",
+      style: { opacity, transform: "rotateX(60deg)" },
+      "aria-hidden": "true",
+      children: lines
     }
   );
 }
@@ -38945,6 +39168,66 @@ function HeroSection() {
     [-1, 1],
     [-deps[6].dR, deps[6].dR]
   );
+  const sx7 = useTransform(
+    springX,
+    [-1, 1],
+    [-deps[7].dX, deps[7].dX]
+  );
+  const sy7 = useTransform(
+    springY,
+    [-1, 1],
+    [-deps[7].dY, deps[7].dY]
+  );
+  const srx7 = useTransform(
+    springY,
+    [-1, 1],
+    [deps[7].dR, -deps[7].dR]
+  );
+  const sry7 = useTransform(
+    springX,
+    [-1, 1],
+    [-deps[7].dR, deps[7].dR]
+  );
+  const sx8 = useTransform(
+    springX,
+    [-1, 1],
+    [-deps[8].dX, deps[8].dX]
+  );
+  const sy8 = useTransform(
+    springY,
+    [-1, 1],
+    [-deps[8].dY, deps[8].dY]
+  );
+  const srx8 = useTransform(
+    springY,
+    [-1, 1],
+    [deps[8].dR, -deps[8].dR]
+  );
+  const sry8 = useTransform(
+    springX,
+    [-1, 1],
+    [-deps[8].dR, deps[8].dR]
+  );
+  const sx9 = useTransform(
+    springX,
+    [-1, 1],
+    [-deps[9].dX, deps[9].dX]
+  );
+  const sy9 = useTransform(
+    springY,
+    [-1, 1],
+    [-deps[9].dY, deps[9].dY]
+  );
+  const srx9 = useTransform(
+    springY,
+    [-1, 1],
+    [deps[9].dR, -deps[9].dR]
+  );
+  const sry9 = useTransform(
+    springX,
+    [-1, 1],
+    [-deps[9].dR, deps[9].dR]
+  );
   const shapeMotion = [
     { x: sx0, y: sy0, rotX: srx0, rotY: sry0 },
     { x: sx1, y: sy1, rotX: srx1, rotY: sry1 },
@@ -38952,7 +39235,10 @@ function HeroSection() {
     { x: sx3, y: sy3, rotX: srx3, rotY: sry3 },
     { x: sx4, y: sy4, rotX: srx4, rotY: sry4 },
     { x: sx5, y: sy5, rotX: srx5, rotY: sry5 },
-    { x: sx6, y: sy6, rotX: srx6, rotY: sry6 }
+    { x: sx6, y: sy6, rotX: srx6, rotY: sry6 },
+    { x: sx7, y: sy7, rotX: srx7, rotY: sry7 },
+    { x: sx8, y: sy8, rotX: srx8, rotY: sry8 },
+    { x: sx9, y: sy9, rotX: srx9, rotY: sry9 }
   ];
   function scrollToServices() {
     var _a2;
@@ -38963,12 +39249,16 @@ function HeroSection() {
     (_a2 = document.getElementById("contact")) == null ? void 0 : _a2.scrollIntoView({ behavior: "smooth" });
   }
   function renderShape(s) {
-    if (s.type === "cube") {
+    if (s.type === "cube")
       return /* @__PURE__ */ jsxRuntimeExports.jsx(WireframeCube, { size: s.size, opacity: s.opacity });
-    }
-    if (s.type === "ring") {
+    if (s.type === "ring")
       return /* @__PURE__ */ jsxRuntimeExports.jsx(RingShape, { size: s.size, opacity: s.opacity });
-    }
+    if (s.type === "torus")
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(TorusShape, { size: s.size, opacity: s.opacity });
+    if (s.type === "diamond")
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(DiamondShape, { size: s.size, opacity: s.opacity });
+    if (s.type === "gridplane")
+      return /* @__PURE__ */ jsxRuntimeExports.jsx(GridPlane, { size: s.size, opacity: s.opacity });
     return null;
   }
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -38978,7 +39268,7 @@ function HeroSection() {
       id: "hero",
       "data-ocid": "hero.section",
       className: "relative min-h-screen flex flex-col items-center justify-center overflow-hidden",
-      style: { perspective: "1400px" },
+      style: { perspective: "1800px" },
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           motion.div,
@@ -39023,12 +39313,14 @@ function HeroSection() {
                 }
               ),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "div",
+                motion.div,
                 {
-                  className: "absolute inset-0 opacity-[0.025]",
+                  className: "absolute inset-0 opacity-[0.03]",
                   style: {
                     backgroundImage: "linear-gradient(oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px), linear-gradient(90deg, oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px)",
-                    backgroundSize: "80px 80px"
+                    backgroundSize: "60px 60px",
+                    x: useTransform(springX, [-1, 1], [-10, 10]),
+                    y: useTransform(springY, [-1, 1], [-10, 10])
                   }
                 }
               )
@@ -39060,7 +39352,7 @@ function HeroSection() {
                     height: s.size,
                     left: s.x,
                     top: s.y,
-                    filter: s.blur ? `blur(${s.blur}px)` : isOrb ? "blur(0px)" : "blur(0px)",
+                    filter: s.blur ? `blur(${s.blur}px)` : "blur(0px)",
                     ...isOrb ? {
                       borderRadius: "50%",
                       background: `radial-gradient(circle at 35% 35%, ${"color" in s ? s.color : "oklch(0.62 0.24 265 / 0.5)"}, oklch(0.4 0.16 265 / 0.05))`,
@@ -39287,34 +39579,58 @@ const STEPS = [
   {
     number: "01",
     icon: MessageCircle,
-    title: "You Share Your Vision",
-    description: "Tell us about your business, goals, and what you need. Quick 15-min call or WhatsApp.",
+    title: "Aap Batao",
+    subtitle: "You Tell Us",
+    description: "Apna business aur goals share karo — free consultation mein, koi charge nahi.",
     color: "oklch(0.62 0.26 265)",
-    glow: "oklch(0.62 0.26 265 / 0.35)"
+    glow: "oklch(0.62 0.26 265 / 0.5)",
+    gradFrom: "oklch(0.62 0.26 265 / 0.18)",
+    gradTo: "oklch(0.62 0.26 265 / 0.04)",
+    border: "oklch(0.62 0.26 265 / 0.35)",
+    hue: "265",
+    delay: 0
   },
   {
     number: "02",
-    icon: Palette,
-    title: "We Design & Build",
-    description: "Our team creates your custom website with premium animations and mobile-first design.",
-    color: "oklch(0.72 0.2 30)",
-    glow: "oklch(0.72 0.2 30 / 0.35)"
+    icon: Layers,
+    title: "Design & Build",
+    subtitle: "Premium Creation",
+    description: "2–7 din mein premium website design + development — mobile-first, fast, beautiful.",
+    color: "oklch(0.72 0.2 285)",
+    glow: "oklch(0.72 0.2 285 / 0.5)",
+    gradFrom: "oklch(0.72 0.2 285 / 0.18)",
+    gradTo: "oklch(0.72 0.2 285 / 0.04)",
+    border: "oklch(0.72 0.2 285 / 0.35)",
+    hue: "285",
+    delay: 0.12
   },
   {
     number: "03",
-    icon: CircleCheck,
-    title: "You Review & Approve",
-    description: "Preview your site, request any changes. Unlimited revisions until you love it.",
-    color: "oklch(0.78 0.14 142)",
-    glow: "oklch(0.78 0.14 142 / 0.35)"
+    icon: CircleCheckBig,
+    title: "Review & Approve",
+    subtitle: "Your Feedback",
+    description: "Aap dekho, feedback do — unlimited revisions jab tak aap 100% khush na ho.",
+    color: "oklch(0.72 0.18 195)",
+    glow: "oklch(0.72 0.18 195 / 0.5)",
+    gradFrom: "oklch(0.72 0.18 195 / 0.18)",
+    gradTo: "oklch(0.72 0.18 195 / 0.04)",
+    border: "oklch(0.72 0.18 195 / 0.35)",
+    hue: "195",
+    delay: 0.24
   },
   {
     number: "04",
     icon: Rocket,
-    title: "Go Live!",
-    description: "We deploy your website and hand over full access. You're live within 2–7 days.",
-    color: "oklch(0.68 0.16 192)",
-    glow: "oklch(0.68 0.16 192 / 0.35)"
+    title: "Go Live! 🚀",
+    subtitle: "Launch Day",
+    description: "Website launch + Google pe setup — aap ready to get customers from day one!",
+    color: "oklch(0.75 0.18 145)",
+    glow: "oklch(0.75 0.18 145 / 0.5)",
+    gradFrom: "oklch(0.75 0.18 145 / 0.18)",
+    gradTo: "oklch(0.75 0.18 145 / 0.04)",
+    border: "oklch(0.75 0.18 145 / 0.35)",
+    hue: "145",
+    delay: 0.36
   }
 ];
 const TRUST_BADGES = [
@@ -39376,76 +39692,157 @@ const RESULTS = [
     glow: "oklch(0.78 0.14 142 / 0.15)"
   }
 ];
-function StepCard({
+function StepCard3D({
   step,
-  index: index2,
-  isLast
+  index: index2
 }) {
   const Icon2 = step.icon;
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative flex flex-col items-center", children: [
-    !isLast && /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "div",
-      {
-        className: "hidden lg:block absolute top-10 left-[calc(50%+2.5rem)] right-0 h-px z-0",
-        style: {
-          background: `linear-gradient(90deg, ${step.color}, transparent)`,
-          opacity: 0.35
-        }
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsxs(
-      motion.div,
-      {
-        initial: { opacity: 0, y: 40 },
-        whileInView: { opacity: 1, y: 0 },
-        viewport: { once: true },
-        transition: {
-          duration: 0.6,
-          delay: index2 * 0.15,
-          ease: [0.22, 1, 0.36, 1]
-        },
-        className: "relative flex flex-col items-center text-center px-4 z-10",
-        children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative mb-5", children: [
+  const cardRef = reactExports.useRef(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useTransform(mouseY, [-80, 80], [8, -8]);
+  const rotateY = useTransform(mouseX, [-80, 80], [-8, 8]);
+  const springRotX = useSpring(rotateX, { stiffness: 200, damping: 20 });
+  const springRotY = useSpring(rotateY, { stiffness: 200, damping: 20 });
+  function handleMouseMove(e) {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  }
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
+  return /* @__PURE__ */ jsxRuntimeExports.jsx(
+    motion.div,
+    {
+      ref: cardRef,
+      initial: { opacity: 0, y: 60, rotateX: 20 },
+      whileInView: { opacity: 1, y: 0, rotateX: 0 },
+      viewport: { once: true },
+      transition: {
+        duration: 0.7,
+        delay: step.delay,
+        ease: [0.22, 1, 0.36, 1]
+      },
+      style: { transformPerspective: 1e3 },
+      onMouseMove: handleMouseMove,
+      onMouseLeave: handleMouseLeave,
+      "data-ocid": `our-work.step.${index2 + 1}`,
+      className: "relative group cursor-default",
+      children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+        motion.div,
+        {
+          style: {
+            rotateX: springRotX,
+            rotateY: springRotY,
+            transformStyle: "preserve-3d"
+          },
+          className: "relative rounded-3xl p-7 overflow-hidden h-full",
+          whileHover: { scale: 1.03 },
+          transition: { type: "spring", stiffness: 260, damping: 22 },
+          children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "div",
               {
-                className: "absolute inset-0 rounded-full blur-xl opacity-60",
-                style: { background: step.glow }
+                className: "absolute inset-0 rounded-3xl",
+                style: {
+                  background: `linear-gradient(135deg, ${step.gradFrom} 0%, ${step.gradTo} 100%)`,
+                  border: `1px solid ${step.border}`,
+                  backdropFilter: "blur(20px)"
+                }
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              motion.div,
+              {
+                className: "absolute -inset-2 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100",
+                style: {
+                  background: `radial-gradient(ellipse at 50% 50%, ${step.glow}, transparent 70%)`,
+                  filter: "blur(20px)",
+                  zIndex: -1
+                },
+                transition: { duration: 0.3 }
               }
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "div",
               {
-                className: "relative w-20 h-20 rounded-full flex items-center justify-center border",
+                className: "absolute top-3 right-5 font-display font-black select-none pointer-events-none",
                 style: {
-                  background: `linear-gradient(135deg, ${step.color}22, ${step.color}08)`,
-                  borderColor: `${step.color}50`,
-                  boxShadow: `0 0 30px ${step.glow}`
+                  fontSize: "5rem",
+                  lineHeight: 1,
+                  color: `oklch(0.62 0.22 ${step.hue} / 0.08)`
                 },
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "w-8 h-8", style: { color: step.color } })
+                "aria-hidden": "true",
+                children: step.number
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsxs(
+              "div",
+              {
+                className: "relative z-10",
+                style: { transform: "translateZ(20px)" },
+                children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-3 mb-5", children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      "div",
+                      {
+                        className: "w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110",
+                        style: {
+                          background: `linear-gradient(135deg, ${step.gradFrom}, ${step.gradTo})`,
+                          border: `1.5px solid ${step.border}`,
+                          boxShadow: `0 0 24px ${step.glow}`
+                        },
+                        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                          Icon2,
+                          {
+                            className: "w-6 h-6",
+                            style: { color: step.color },
+                            strokeWidth: 1.8
+                          }
+                        )
+                      }
+                    ),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      "span",
+                      {
+                        className: "font-display font-black text-2xl bg-clip-text text-transparent",
+                        style: {
+                          backgroundImage: `linear-gradient(135deg, ${step.color}, ${step.color}bb)`
+                        },
+                        children: step.number
+                      }
+                    )
+                  ] }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-extrabold text-xl text-foreground mb-1 leading-tight", children: step.title }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "p",
+                    {
+                      className: "text-xs font-semibold tracking-widest uppercase mb-3",
+                      style: { color: step.color },
+                      children: step.subtitle
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm leading-relaxed", children: step.description })
+                ]
               }
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "div",
               {
-                className: "absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black text-white",
-                style: {
-                  background: `linear-gradient(135deg, ${step.color}, ${step.color}cc)`,
-                  boxShadow: `0 2px 8px ${step.glow}`
-                },
-                children: index2 + 1
+                className: "absolute inset-0 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+                style: { boxShadow: `inset 0 0 30px ${step.glow}` }
               }
             )
-          ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-extrabold text-base lg:text-lg text-foreground mb-2 leading-tight", children: step.title }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm leading-relaxed max-w-[180px]", children: step.description })
-        ]
-      }
-    )
-  ] });
+          ]
+        }
+      )
+    }
+  );
 }
-function TrustBadge({
+function TrustBadge3D({
   badge,
   index: index2
 }) {
@@ -39453,7 +39850,7 @@ function TrustBadge({
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     motion.div,
     {
-      initial: { opacity: 0, scale: 0.88, y: 24 },
+      initial: { opacity: 0, scale: 0.8, y: 30 },
       whileInView: { opacity: 1, scale: 1, y: 0 },
       viewport: { once: true },
       transition: {
@@ -39461,27 +39858,36 @@ function TrustBadge({
         delay: index2 * 0.1,
         ease: [0.34, 1.56, 0.64, 1]
       },
-      whileHover: { y: -5, transition: { duration: 0.25 } },
-      "data-ocid": `our-work.trust_badge.${index2 + 1}`,
-      className: "relative glass rounded-2xl p-5 flex flex-col items-center text-center group overflow-hidden",
-      style: {
-        border: `1px solid ${badge.color}25`,
-        boxShadow: "0 8px 32px rgba(0,0,0,0.35)"
+      whileHover: {
+        y: -8,
+        rotateY: 8,
+        scale: 1.04,
+        transition: { duration: 0.25 }
       },
+      style: { transformPerspective: 800, transformStyle: "preserve-3d" },
+      "data-ocid": `our-work.trust_badge.${index2 + 1}`,
+      className: "relative glass rounded-2xl p-5 flex flex-col items-center text-center group overflow-hidden cursor-default",
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
             className: "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none",
             style: {
-              background: `radial-gradient(ellipse at 50% 0%, ${badge.color}12, transparent 70%)`
+              background: `radial-gradient(ellipse at 50% 0%, ${badge.color}20, transparent 70%)`
             }
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
-            className: "w-12 h-12 rounded-xl flex items-center justify-center mb-3",
+            className: "absolute inset-0 rounded-2xl pointer-events-none",
+            style: { boxShadow: `0 20px 40px -10px ${badge.color}30` }
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: "w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110",
             style: {
               background: `${badge.color}18`,
               border: `1px solid ${badge.color}35`,
@@ -39512,7 +39918,7 @@ function ResultCard({
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     motion.div,
     {
-      initial: { opacity: 0, y: 36 },
+      initial: { opacity: 0, y: 40 },
       whileInView: { opacity: 1, y: 0 },
       viewport: { once: true },
       transition: {
@@ -39520,15 +39926,22 @@ function ResultCard({
         delay: index2 * 0.12,
         ease: [0.22, 1, 0.36, 1]
       },
-      whileHover: { y: -6, transition: { duration: 0.3 } },
+      whileHover: { y: -8, scale: 1.02, transition: { duration: 0.3 } },
+      style: { transformPerspective: 900 },
       "data-ocid": `our-work.result_card.${index2 + 1}`,
       className: "relative rounded-2xl p-6 flex flex-col group overflow-hidden",
-      style: {
-        background: "oklch(0.1 0.02 265)",
-        border: `1px solid ${result.borderColor}`,
-        boxShadow: `0 0 40px ${result.glow}, 0 12px 40px rgba(0,0,0,0.4)`
-      },
       children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: "absolute inset-0 rounded-2xl",
+            style: {
+              background: "oklch(0.1 0.02 265)",
+              border: `1px solid ${result.borderColor}`,
+              boxShadow: `0 0 40px ${result.glow}, 0 12px 40px rgba(0,0,0,0.4)`
+            }
+          }
+        ),
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
@@ -39545,27 +39958,29 @@ function ResultCard({
             }
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: "w-14 h-14 rounded-2xl flex items-center justify-center mb-4 relative",
-            style: {
-              background: result.gradient,
-              boxShadow: `0 4px 20px ${result.borderColor}`
-            },
-            children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "w-7 h-7 text-white" })
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: "font-display font-black text-4xl lg:text-5xl leading-none mb-1 bg-clip-text text-transparent",
-            style: { backgroundImage: result.gradient },
-            children: result.metric
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-extrabold text-lg text-foreground mb-2", children: result.headline }),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm leading-relaxed flex-1", children: result.description })
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative z-10 flex flex-col h-full", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "w-14 h-14 rounded-2xl flex items-center justify-center mb-4 flex-shrink-0",
+              style: {
+                background: result.gradient,
+                boxShadow: `0 4px 20px ${result.borderColor}`
+              },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "w-7 h-7 text-white" })
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "font-display font-black text-4xl lg:text-5xl leading-none mb-1 bg-clip-text text-transparent",
+              style: { backgroundImage: result.gradient },
+              children: result.metric
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-extrabold text-lg text-foreground mb-2", children: result.headline }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm leading-relaxed flex-1", children: result.description })
+        ] })
       ]
     }
   );
@@ -39575,34 +39990,57 @@ function PortfolioSection() {
     "section",
     {
       id: "portfolio",
-      className: "section-card py-20 lg:py-28 relative overflow-hidden",
+      className: "relative py-20 lg:py-28 overflow-hidden",
       "data-ocid": "our-work.section",
+      style: {
+        background: "linear-gradient(180deg, oklch(0.09 0.025 265) 0%, oklch(0.07 0.015 265) 100%)",
+        perspective: "1500px"
+      },
       children: [
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: "absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.04] pointer-events-none",
-            style: {
-              background: "radial-gradient(ellipse at center, oklch(0.62 0.26 265) 0%, transparent 65%)"
+        /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "absolute inset-0 pointer-events-none", "aria-hidden": "true", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px]",
+              style: {
+                background: "radial-gradient(ellipse at center, oklch(0.62 0.26 265 / 0.05) 0%, transparent 65%)",
+                filter: "blur(40px)"
+              }
             }
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: "absolute bottom-1/3 right-0 w-60 h-60 opacity-[0.05] pointer-events-none rounded-full blur-3xl",
-            style: { background: "oklch(0.72 0.2 30)" }
-          }
-        ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx(
-          "div",
-          {
-            className: "absolute top-1/2 -left-20 w-48 h-48 opacity-[0.04] pointer-events-none rounded-full blur-3xl",
-            style: { background: "oklch(0.78 0.14 142)" }
-          }
-        ),
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute bottom-1/3 right-0 w-72 h-72 rounded-full",
+              style: {
+                background: "oklch(0.72 0.2 285 / 0.05)",
+                filter: "blur(60px)"
+              }
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute top-1/2 -left-20 w-56 h-56 rounded-full",
+              style: {
+                background: "oklch(0.75 0.18 145 / 0.04)",
+                filter: "blur(60px)"
+              }
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            "div",
+            {
+              className: "absolute inset-0 opacity-[0.02]",
+              style: {
+                backgroundImage: "linear-gradient(oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px), linear-gradient(90deg, oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px)",
+                backgroundSize: "60px 60px"
+              }
+            }
+          )
+        ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto px-6 lg:px-8", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-20", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-24", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               motion.div,
               {
@@ -39610,7 +40048,7 @@ function PortfolioSection() {
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true },
                 transition: { duration: 0.7 },
-                className: "text-center mb-14",
+                className: "text-center mb-16",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "span",
@@ -39625,7 +40063,7 @@ function PortfolioSection() {
                     }
                   ),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "font-display font-extrabold text-3xl lg:text-5xl text-foreground mb-4 leading-tight", children: [
-                    "From Idea to",
+                    "Idea se",
                     " ",
                     /* @__PURE__ */ jsxRuntimeExports.jsx(
                       "span",
@@ -39636,26 +40074,56 @@ function PortfolioSection() {
                       }
                     ),
                     " ",
-                    "in Days"
+                    "tak — Sirf Days Mein"
                   ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-base lg:text-lg max-w-xl mx-auto leading-relaxed", children: "A clear, smooth process — so you always know what's happening next." })
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-base lg:text-lg max-w-xl mx-auto leading-relaxed", children: "Ek clear, smooth process — aap hamesha jaante ho aage kya hoga." })
                 ]
               }
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               "div",
               {
-                className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4",
+                className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6",
                 "data-ocid": "our-work.process.list",
-                children: STEPS.map((step, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  StepCard,
-                  {
-                    step,
-                    index: index2,
-                    isLast: index2 === STEPS.length - 1
-                  },
-                  step.number
-                ))
+                children: STEPS.map((step, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(StepCard3D, { step, index: index2 }, step.number))
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "div",
+              {
+                className: "hidden lg:flex items-center justify-between max-w-5xl mx-auto mt-6 px-12",
+                "aria-hidden": "true",
+                children: STEPS.slice(0, -1).map((step, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex-1 flex items-center gap-1", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    motion.div,
+                    {
+                      className: "flex-1 h-px",
+                      style: {
+                        background: `linear-gradient(90deg, ${step.color}50, ${STEPS[i + 1].color}50)`
+                      },
+                      initial: { scaleX: 0 },
+                      whileInView: { scaleX: 1 },
+                      viewport: { once: true },
+                      transition: { duration: 0.8, delay: 0.5 + i * 0.15 }
+                    }
+                  ),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    motion.div,
+                    {
+                      className: "w-1.5 h-1.5 rounded-full flex-shrink-0",
+                      style: {
+                        background: step.color,
+                        boxShadow: `0 0 8px ${step.glow}`
+                      },
+                      animate: { opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] },
+                      transition: {
+                        duration: 2,
+                        repeat: Number.POSITIVE_INFINITY,
+                        delay: i * 0.5
+                      }
+                    }
+                  )
+                ] }, step.number))
               }
             )
           ] }),
@@ -39666,7 +40134,7 @@ function PortfolioSection() {
               whileInView: { opacity: 1, scaleX: 1 },
               viewport: { once: true },
               transition: { duration: 0.8 },
-              className: "flex items-center gap-4 mb-20",
+              className: "flex items-center gap-4 mb-24",
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -39680,7 +40148,7 @@ function PortfolioSection() {
               ]
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-20", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-24", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
               motion.div,
               {
@@ -39688,17 +40156,17 @@ function PortfolioSection() {
                 whileInView: { opacity: 1, y: 0 },
                 viewport: { once: true },
                 transition: { duration: 0.65 },
-                className: "text-center mb-10",
+                className: "text-center mb-12",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "font-display font-extrabold text-2xl lg:text-4xl text-foreground mb-2 leading-tight", children: [
-                    "Why Businesses",
+                    "Businesses Kyun",
                     " ",
                     /* @__PURE__ */ jsxRuntimeExports.jsx(
                       "span",
                       {
                         className: "bg-clip-text text-transparent",
                         style: { backgroundImage: "var(--gradient-primary)" },
-                        children: "Trust Us"
+                        children: "Trust Karte Hain"
                       }
                     )
                   ] }),
@@ -39711,7 +40179,7 @@ function PortfolioSection() {
               {
                 className: "grid grid-cols-2 lg:grid-cols-4 gap-4",
                 "data-ocid": "our-work.trust_badges.list",
-                children: TRUST_BADGES.map((badge, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(TrustBadge, { badge, index: index2 }, badge.label))
+                children: TRUST_BADGES.map((badge, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(TrustBadge3D, { badge, index: index2 }, badge.label))
               }
             )
           ] }),
@@ -39722,7 +40190,7 @@ function PortfolioSection() {
               whileInView: { opacity: 1, scaleX: 1 },
               viewport: { once: true },
               transition: { duration: 0.8 },
-              className: "flex items-center gap-4 mb-20",
+              className: "flex items-center gap-4 mb-24",
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -39759,7 +40227,7 @@ function PortfolioSection() {
                     }
                   ),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "font-display font-extrabold text-2xl lg:text-4xl text-foreground mb-2 leading-tight", children: [
-                    "What Our Clients",
+                    "Clients Kya",
                     " ",
                     /* @__PURE__ */ jsxRuntimeExports.jsx(
                       "span",
@@ -39770,7 +40238,9 @@ function PortfolioSection() {
                         },
                         children: "Actually Achieve"
                       }
-                    )
+                    ),
+                    " ",
+                    "Karte Hain"
                   ] }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm lg:text-base max-w-md mx-auto", children: "A website isn't a cost — it's your highest-ROI investment." })
                 ]
@@ -39836,77 +40306,94 @@ const plans = [
   {
     id: "classic",
     name: "Classic",
-    price: "₹6,999",
-    originalPrice: "₹12,999",
-    savePct: "Save 46%",
+    price: "₹3,999",
+    originalPrice: "₹7,499",
+    savePct: "Save 47%",
     emoji: "🚀",
-    badge: "Starter Pick",
+    badge: "Best for Starters",
     badgeStyle: "starter",
     popular: false,
     ctaLabel: "Get Started",
+    glowColor: "oklch(0.6 0.15 220 / 0.35)",
+    borderGrad: "linear-gradient(135deg, oklch(0.5 0.08 220 / 0.6), oklch(0.4 0.06 220 / 0.2))",
+    accentColor: "oklch(0.72 0.15 220)",
     features: [
-      "Up to 5 Pages",
-      "Mobile Responsive Design",
-      "Basic SEO Setup",
-      "Contact Form",
-      "1 Month Free Support",
-      "Live in 2–7 Days"
+      "5-page website",
+      "Mobile responsive design",
+      "Basic SEO setup",
+      "WhatsApp button integration",
+      "2–7 day delivery",
+      "1 revision round"
     ]
   },
   {
     id: "royal",
     name: "Royal",
-    price: "₹8,999",
-    originalPrice: "₹17,999",
+    price: "₹5,999",
+    originalPrice: "₹11,999",
     savePct: "Save 50%",
     emoji: "👑",
-    badge: "Most Popular",
+    badge: "⭐ Most Popular",
     badgeStyle: "popular",
     extraBadge: "Best Value",
     popular: true,
     ctaLabel: "Get Started",
+    glowColor: "oklch(0.62 0.26 265 / 0.5)",
+    borderGrad: "linear-gradient(135deg, oklch(0.62 0.26 265 / 0.9), oklch(0.5 0.22 285 / 0.6))",
+    accentColor: "oklch(0.72 0.26 265)",
     features: [
-      "Up to 10 Pages",
-      "Premium UI/UX Design",
-      "Advanced SEO + Local SEO",
-      "WhatsApp Integration",
-      "Google Analytics Setup",
-      "3 Months Free Support",
-      "Live in 2–5 Days"
+      "10-page website",
+      "Premium design & animations",
+      "Full SEO optimization",
+      "Google Business setup",
+      "WhatsApp + inquiry form",
+      "2–5 day delivery",
+      "3 revision rounds",
+      "1 month free support"
     ]
   },
   {
     id: "premium",
     name: "Premium",
-    price: "₹12,999",
-    originalPrice: "₹24,999",
-    savePct: "Save 52%",
+    price: "₹8,999",
+    originalPrice: "₹17,999",
+    savePct: "Save 50%",
     emoji: "💎",
-    badge: "Limited Time Offer",
+    badge: "🔥 Limited Time",
     badgeStyle: "limited",
     popular: false,
     ctaLabel: "Get Started",
+    glowColor: "oklch(0.72 0.22 60 / 0.35)",
+    borderGrad: "linear-gradient(135deg, oklch(0.72 0.22 60 / 0.6), oklch(0.62 0.18 285 / 0.4))",
+    accentColor: "oklch(0.78 0.2 60)",
     features: [
-      "Unlimited Pages",
-      "Custom Animations & 3D Effects",
-      "Full SEO + GMB Optimization",
-      "Payment Gateway Integration",
-      "Priority Support (6 Months)",
-      "Live in 2–3 Days"
+      "Unlimited pages",
+      "Custom animations & 3D effects",
+      "Full SEO + Google Ads setup",
+      "Video integration",
+      "Priority support",
+      "3–5 day delivery",
+      "Unlimited revisions",
+      "3 months support"
     ]
   }
 ];
-const badgeClasses = {
-  starter: "bg-blue-500/15 border border-blue-500/30 text-blue-400",
-  popular: "bg-violet-500/20 border border-violet-500/40 text-violet-300",
-  limited: "bg-orange-500/15 border border-orange-500/30 text-orange-400"
-};
-function TiltCard({ plan, index: index2 }) {
+const ALL_INCLUDED = [
+  "Free domain consultation",
+  "SSL certificate setup",
+  "Fast hosting guide",
+  "Google Analytics",
+  "WhatsApp integration",
+  "Mobile responsive"
+];
+function TiltCard3D({ plan, index: index2 }) {
   const cardRef = reactExports.useRef(null);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const rotateX = useTransform(mouseY, [-100, 100], [5, -5]);
-  const rotateY = useTransform(mouseX, [-100, 100], [-5, 5]);
+  const rawRotX = useTransform(mouseY, [-120, 120], [10, -10]);
+  const rawRotY = useTransform(mouseX, [-120, 120], [-10, 10]);
+  const rotateX = useSpring(rawRotX, { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(rawRotY, { stiffness: 200, damping: 20 });
   function handleMouseMove(e) {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
@@ -39923,107 +40410,169 @@ function TiltCard({ plan, index: index2 }) {
     {
       "data-ocid": `pricing.item.${index2 + 1}`,
       ref: cardRef,
-      initial: { opacity: 0, y: 48 },
+      initial: { opacity: 0, y: 60 },
       whileInView: { opacity: 1, y: 0 },
       viewport: { once: true },
-      transition: { duration: 0.55, delay: index2 * 0.13, ease: "easeOut" },
-      whileHover: isPopular ? { scale: 1.04, y: -8 } : { scale: 1.02, y: -5 },
-      style: isPopular ? {
-        rotateX,
-        rotateY,
-        transformPerspective: 1e3,
-        border: "2px solid oklch(0.62 0.26 265 / 0.8)",
-        boxShadow: "0 0 50px oklch(0.62 0.26 265 / 0.4), 0 0 100px oklch(0.62 0.26 265 / 0.2)"
-      } : { rotateX, rotateY, transformPerspective: 1e3 },
+      transition: {
+        duration: 0.6,
+        delay: index2 * 0.14,
+        ease: [0.22, 1, 0.36, 1]
+      },
+      style: { transformPerspective: 1e3 },
       onMouseMove: handleMouseMove,
       onMouseLeave: handleMouseLeave,
-      className: `relative flex flex-col rounded-2xl overflow-hidden cursor-default ${isPopular ? "bg-card scale-[1.05] z-10" : "glass border border-border/30"}`,
+      className: `relative group cursor-default ${isPopular ? "z-10" : ""}`,
       children: [
-        isPopular && /* @__PURE__ */ jsxRuntimeExports.jsx(
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
-            className: "absolute inset-0 pointer-events-none z-0",
+            className: "absolute -inset-3 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500",
             style: {
-              background: "radial-gradient(ellipse 100% 60% at 50% 0%, oklch(0.62 0.26 265 / 0.12) 0%, transparent 70%)"
-            }
+              background: `radial-gradient(ellipse at 50% 50%, ${plan.glowColor}, transparent 70%)`,
+              filter: "blur(16px)"
+            },
+            "aria-hidden": "true"
           }
         ),
-        /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 left-0 right-0 flex justify-center z-20 pt-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "span",
-          {
-            className: `inline-flex items-center gap-1.5 text-xs font-bold tracking-wide px-4 py-1.5 rounded-b-xl ${badgeClasses[plan.badgeStyle]}`,
-            children: [
-              plan.emoji,
-              " ",
-              plan.badge
-            ]
-          }
-        ) }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs(
-          "div",
+          motion.div,
           {
-            className: `p-7 flex flex-col flex-1 relative z-10 ${isPopular ? "pt-11" : "pt-11"}`,
+            style: { rotateX, rotateY, transformStyle: "preserve-3d" },
+            whileHover: { scale: isPopular ? 1.04 : 1.02, y: isPopular ? -10 : -6 },
+            transition: { type: "spring", stiffness: 260, damping: 22 },
+            className: "relative flex flex-col rounded-3xl overflow-hidden h-full",
             children: [
-              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-3", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between flex-wrap gap-2 mb-2", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display text-2xl font-bold text-foreground", children: plan.name }),
-                  plan.extraBadge && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-bold px-2.5 py-0.5 rounded-full bg-violet-500/20 border border-violet-500/30 text-violet-300", children: plan.extraBadge })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "inline-flex items-center gap-1.5 text-orange-400 text-xs font-semibold uppercase tracking-wider bg-orange-500/10 border border-orange-500/20 rounded-full px-3 py-0.5", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" }),
-                  "⚡ Limited Slots"
-                ] })
-              ] }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mb-5 flex items-end gap-3 flex-wrap", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mb-0.5", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground text-sm line-through", children: plan.originalPrice }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400", children: plan.savePct })
-                ] }),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "span",
-                  {
-                    className: "font-display text-5xl font-black leading-none",
-                    style: {
-                      background: isPopular ? "linear-gradient(135deg, oklch(0.75 0.18 265), oklch(0.65 0.24 295))" : "var(--gradient-primary)",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                      backgroundClip: "text"
-                    },
-                    children: plan.price
-                  }
-                )
-              ] }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-xs mb-4 -mt-3", children: "One-time payment · No hidden fees" }),
               /* @__PURE__ */ jsxRuntimeExports.jsx(
                 "div",
                 {
-                  className: "h-px mb-5",
+                  className: "absolute inset-0 rounded-3xl",
                   style: {
-                    background: isPopular ? "linear-gradient(90deg, transparent, oklch(0.62 0.26 265 / 0.5), transparent)" : "oklch(var(--border) / 0.3)"
+                    padding: "1.5px",
+                    background: plan.borderGrad
+                  },
+                  "aria-hidden": "true",
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    "div",
+                    {
+                      className: "w-full h-full rounded-3xl",
+                      style: { background: "oklch(0.1 0.02 265)" }
+                    }
+                  )
+                }
+              ),
+              isPopular && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "div",
+                {
+                  className: "absolute inset-0 rounded-3xl pointer-events-none",
+                  style: {
+                    background: "radial-gradient(ellipse 100% 60% at 50% 0%, oklch(0.62 0.26 265 / 0.15) 0%, transparent 70%)",
+                    boxShadow: `0 0 60px ${plan.glowColor}, 0 0 120px oklch(0.62 0.26 265 / 0.1)`
                   }
                 }
               ),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "flex-1 space-y-2.5 mb-7", children: plan.features.map((feature) => /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-start gap-3", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "span",
-                  {
-                    className: `mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center ${isPopular ? "bg-primary/20" : "bg-primary/10"}`,
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "w-2.5 h-2.5 text-primary" })
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-foreground/85 text-sm leading-relaxed", children: feature })
-              ] }, feature)) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                Button,
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                motion.div,
                 {
-                  type: "button",
-                  "data-ocid": `pricing.get_started_button.${index2 + 1}`,
-                  className: `w-full font-semibold transition-smooth flex items-center justify-center gap-2 ${isPopular ? "gradient-primary text-primary-foreground glow-btn border-0 hover:opacity-90" : "bg-secondary text-foreground hover:bg-primary/20 border border-border/40"}`,
-                  onClick: () => window.open(WHATSAPP_URL, "_blank"),
+                  className: "absolute inset-0 rounded-3xl pointer-events-none",
+                  animate: {
+                    boxShadow: isPopular ? [
+                      `0 0 30px ${plan.glowColor}`,
+                      `0 0 60px ${plan.glowColor}`,
+                      `0 0 30px ${plan.glowColor}`
+                    ] : []
+                  },
+                  transition: {
+                    repeat: Number.POSITIVE_INFINITY,
+                    duration: 3,
+                    ease: "easeInOut"
+                  },
+                  "aria-hidden": "true"
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  className: `relative z-10 flex flex-col flex-1 p-7 ${isPopular ? "pt-12" : "pt-12"}`,
                   children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx(MessageCircle, { className: "w-4 h-4" }),
-                    plan.ctaLabel,
-                    " on WhatsApp"
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 left-0 right-0 flex justify-center pt-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                      "span",
+                      {
+                        className: `inline-flex items-center gap-1.5 text-xs font-bold tracking-wide px-4 py-1.5 rounded-b-xl ${plan.badgeStyle === "popular" ? "bg-violet-500/20 border border-violet-500/40 text-violet-300" : plan.badgeStyle === "limited" ? "bg-orange-500/15 border border-orange-500/30 text-orange-400" : "bg-blue-500/15 border border-blue-500/30 text-blue-400"}`,
+                        children: [
+                          plan.emoji,
+                          " ",
+                          plan.badge
+                        ]
+                      }
+                    ) }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between flex-wrap gap-2 mb-3", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display text-2xl font-bold text-foreground", children: plan.name }),
+                      plan.extraBadge && /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-bold px-2.5 py-0.5 rounded-full bg-violet-500/20 border border-violet-500/30 text-violet-300", children: plan.extraBadge })
+                    ] }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "inline-flex items-center gap-1.5 text-orange-400 text-xs font-semibold uppercase tracking-wider bg-orange-500/10 border border-orange-500/20 rounded-full px-3 py-0.5 mb-4 self-start", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" }),
+                      "⚡ Limited Slots"
+                    ] }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "mb-5", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2 mb-1", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground text-sm line-through", children: plan.originalPrice }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400", children: plan.savePct })
+                      ] }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        "span",
+                        {
+                          className: "font-display text-5xl font-black leading-none",
+                          style: {
+                            background: plan.borderGrad,
+                            WebkitBackgroundClip: "text",
+                            WebkitTextFillColor: "transparent",
+                            backgroundClip: "text"
+                          },
+                          children: plan.price
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-xs mb-5 -mt-3", children: "One-time payment · No hidden fees" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx(
+                      "div",
+                      {
+                        className: "h-px mb-5",
+                        style: {
+                          background: `linear-gradient(90deg, transparent, ${plan.accentColor}50, transparent)`
+                        }
+                      }
+                    ),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "flex-1 space-y-2.5 mb-7", children: plan.features.map((feature) => /* @__PURE__ */ jsxRuntimeExports.jsxs("li", { className: "flex items-start gap-3", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        "span",
+                        {
+                          className: "mt-0.5 flex-shrink-0 w-4 h-4 rounded-full flex items-center justify-center",
+                          style: { background: `${plan.accentColor}25` },
+                          children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                            Check,
+                            {
+                              className: "w-2.5 h-2.5",
+                              style: { color: plan.accentColor }
+                            }
+                          )
+                        }
+                      ),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-foreground/85 text-sm leading-relaxed", children: feature })
+                    ] }, feature)) }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                      Button,
+                      {
+                        type: "button",
+                        "data-ocid": `pricing.get_started_button.${index2 + 1}`,
+                        className: `w-full font-semibold transition-smooth flex items-center justify-center gap-2 ${isPopular ? "gradient-primary text-primary-foreground glow-btn border-0 hover:opacity-90" : "bg-secondary text-foreground hover:bg-primary/20 border border-border/40"}`,
+                        onClick: () => window.open(WHATSAPP_URL, "_blank"),
+                        children: [
+                          /* @__PURE__ */ jsxRuntimeExports.jsx(MessageCircle, { className: "w-4 h-4" }),
+                          plan.ctaLabel,
+                          " on WhatsApp"
+                        ]
+                      }
+                    )
                   ]
                 }
               )
@@ -40039,7 +40588,10 @@ function PricingSection() {
     "section",
     {
       id: "pricing",
-      className: "relative py-24 overflow-hidden section-dark",
+      className: "relative py-24 overflow-hidden",
+      style: {
+        background: "linear-gradient(160deg, oklch(0.07 0.02 265) 0%, oklch(0.1 0.035 265) 50%, oklch(0.07 0.015 265) 100%)"
+      },
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
@@ -40047,33 +40599,83 @@ function PricingSection() {
             className: "absolute inset-0 pointer-events-none",
             "aria-hidden": "true",
             style: {
-              background: "radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.6 0.23 265 / 0.08) 0%, transparent 70%)"
+              background: [
+                "radial-gradient(ellipse 80% 60% at 50% 0%, oklch(0.6 0.23 265 / 0.1) 0%, transparent 70%)",
+                "radial-gradient(ellipse 40% 40% at 20% 80%, oklch(0.72 0.2 60 / 0.05) 0%, transparent 70%)"
+              ].join(", ")
             }
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: "absolute inset-0 pointer-events-none opacity-[0.022]",
+            "aria-hidden": "true",
+            style: {
+              backgroundImage: "linear-gradient(oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px), linear-gradient(90deg, oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px)",
+              backgroundSize: "60px 60px"
+            }
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          motion.div,
+          {
+            className: "absolute top-20 right-[8%] pointer-events-none hidden lg:block",
+            animate: { y: [0, -18, 0], rotate: [8, 12, 8] },
+            transition: {
+              duration: 5,
+              repeat: Number.POSITIVE_INFINITY,
+              ease: "easeInOut"
+            },
+            "aria-hidden": "true",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              "div",
+              {
+                className: "w-16 h-16 rounded-2xl flex items-center justify-center",
+                style: {
+                  background: "linear-gradient(135deg, oklch(0.72 0.22 60 / 0.2), oklch(0.62 0.26 265 / 0.1))",
+                  border: "1px solid oklch(0.72 0.22 60 / 0.3)",
+                  boxShadow: "0 8px 32px oklch(0.72 0.22 60 / 0.15)"
+                },
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-2xl", children: "🏷️" })
+              }
+            )
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-6 relative z-10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             motion.div,
             {
-              className: "text-center mb-14",
+              className: "text-center mb-16",
               initial: { opacity: 0, y: 30 },
               whileInView: { opacity: 1, y: 0 },
               viewport: { once: true },
               transition: { duration: 0.6, ease: "easeOut" },
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "inline-block text-primary text-sm font-semibold tracking-widest uppercase mb-3", children: "Pricing" }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "font-display text-4xl md:text-5xl font-bold text-foreground mb-4", children: [
-                  "Invest Once.",
+                /* @__PURE__ */ jsxRuntimeExports.jsxs("h2", { className: "font-display text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight", children: [
+                  "Apni Website ka",
                   " ",
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "span",
                     {
                       className: "bg-clip-text text-transparent",
                       style: { backgroundImage: "var(--gradient-primary)" },
-                      children: "Grow Forever."
+                      children: "Price Dekho"
                     }
                   )
                 ] }),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  motion.div,
+                  {
+                    className: "mx-auto mb-4 h-1 rounded-full",
+                    style: { background: "var(--gradient-primary)", maxWidth: "180px" },
+                    initial: { scaleX: 0 },
+                    whileInView: { scaleX: 1 },
+                    viewport: { once: true },
+                    transition: { duration: 0.6, delay: 0.3 }
+                  }
+                ),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-base max-w-xl mx-auto mb-5", children: "One-time Indian Rupee pricing. No monthly charges. No surprises. Just results." }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs(
                   motion.div,
@@ -40095,11 +40697,39 @@ function PricingSection() {
               ]
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center", children: plans.map((plan, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(TiltCard, { plan, index: index2 }, plan.id)) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto items-center mb-14", children: plans.map((plan, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(TiltCard3D, { plan, index: index2 }, plan.id)) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            motion.div,
+            {
+              initial: { opacity: 0, y: 24 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.55, delay: 0.3 },
+              className: "max-w-3xl mx-auto mb-10",
+              children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  className: "rounded-2xl p-6",
+                  style: {
+                    background: "oklch(0.1 0.02 265)",
+                    border: "1px solid oklch(0.62 0.26 265 / 0.15)",
+                    boxShadow: "0 0 40px oklch(0.62 0.26 265 / 0.05)"
+                  },
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display font-bold text-foreground text-sm text-center mb-4", children: "✅ Sab mein shamil hai: (All plans include)" }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 sm:grid-cols-3 gap-2", children: ALL_INCLUDED.map((item) => /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(Check, { className: "w-3.5 h-3.5 text-primary flex-shrink-0" }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-muted-foreground text-xs", children: item })
+                    ] }, item)) })
+                  ]
+                }
+              )
+            }
+          ),
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             motion.div,
             {
-              className: "flex flex-col sm:flex-row items-center justify-center gap-3 mt-10 text-muted-foreground text-sm",
+              className: "flex flex-col sm:flex-row items-center justify-center gap-3 text-muted-foreground text-sm",
               initial: { opacity: 0 },
               whileInView: { opacity: 1 },
               viewport: { once: true },
@@ -40121,10 +40751,32 @@ function PricingSection() {
                 ] }),
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "hidden sm:block text-border", children: "·" }),
                 /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center gap-2", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "🏆" }),
+                  /* @__PURE__ */ jsxRuntimeExports.jsx(Star, { className: "w-4 h-4 text-amber-400 fill-amber-400" }),
                   /* @__PURE__ */ jsxRuntimeExports.jsx("span", { children: "Trusted by 50+ Indian businesses" })
                 ] })
               ]
+            }
+          ),
+          /* @__PURE__ */ jsxRuntimeExports.jsx(
+            motion.div,
+            {
+              initial: { opacity: 0, y: 12 },
+              whileInView: { opacity: 1, y: 0 },
+              viewport: { once: true },
+              transition: { duration: 0.5, delay: 0.6 },
+              className: "text-center mt-8",
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "p",
+                {
+                  className: "text-sm font-bold inline-block px-6 py-2 rounded-full",
+                  style: {
+                    background: "oklch(0.72 0.22 60 / 0.1)",
+                    border: "1px solid oklch(0.72 0.22 60 / 0.25)",
+                    color: "oklch(0.78 0.2 60)"
+                  },
+                  children: "⏰ Offer sirf limited time ke liye! Aaj hi WhatsApp karo."
+                }
+              )
             }
           )
         ] })
@@ -41545,12 +42197,184 @@ function CountUp({
     }
   );
 }
+function StatCard3D({ stat, index: index2 }) {
+  const cardRef = reactExports.useRef(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rawRotX = useTransform(mouseY, [-60, 60], [8, -8]);
+  const rawRotY = useTransform(mouseX, [-60, 60], [-8, 8]);
+  const rotateX = useSpring(rawRotX, { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(rawRotY, { stiffness: 200, damping: 20 });
+  const [hovered, setHovered] = reactExports.useState(false);
+  function handleMouseMove(e) {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  }
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+    setHovered(false);
+  }
+  const statColor = stat.color.replace(")", " / 0.2)");
+  const borderColor = stat.color.replace(")", " / 0.25)");
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    motion.div,
+    {
+      ref: cardRef,
+      "data-ocid": `stats.item.${index2 + 1}`,
+      initial: { opacity: 0, y: 40, scale: 0.92 },
+      whileInView: { opacity: 1, y: 0, scale: 1 },
+      viewport: { once: true },
+      transition: {
+        duration: 0.6,
+        delay: index2 * 0.12,
+        ease: [0.22, 1, 0.36, 1]
+      },
+      style: { transformPerspective: 900 },
+      onMouseMove: handleMouseMove,
+      onMouseLeave: handleMouseLeave,
+      onMouseEnter: () => setHovered(true),
+      className: "relative group cursor-default",
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: "absolute -inset-2 rounded-2xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+            style: {
+              background: `radial-gradient(ellipse at 50% 50%, ${stat.glow.replace("0.4)", "0.25)")}, transparent 70%)`,
+              filter: "blur(12px)"
+            },
+            "aria-hidden": "true"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsxs(
+          motion.div,
+          {
+            style: {
+              rotateX,
+              rotateY,
+              transformStyle: "preserve-3d",
+              boxShadow: hovered ? `0 20px 50px -10px ${stat.glow}, 0 0 0 1px ${borderColor}` : `0 8px 24px rgba(0,0,0,0.3), 0 0 0 1px ${borderColor}`,
+              background: "oklch(0.12 0.04 265 / 0.6)",
+              border: `1px solid ${borderColor}`,
+              backdropFilter: "blur(20px)"
+            },
+            transition: { type: "spring", stiffness: 260, damping: 22 },
+            className: "relative rounded-2xl p-6 flex flex-col items-center text-center overflow-hidden",
+            whileHover: { scale: 1.06, y: -6 },
+            children: [
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "div",
+                {
+                  className: "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
+                  style: {
+                    background: `radial-gradient(ellipse 80% 80% at 50% 0%, ${statColor} 0%, transparent 70%)`
+                  }
+                }
+              ),
+              hovered && /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "div",
+                {
+                  className: "absolute inset-0 pointer-events-none overflow-hidden rounded-2xl",
+                  "aria-hidden": "true",
+                  children: [...Array(3)].map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                    motion.div,
+                    {
+                      className: "absolute font-display font-black text-xs select-none",
+                      style: {
+                        color: stat.color,
+                        opacity: 0.15,
+                        left: `${20 + i * 30}%`,
+                        top: `${30 + i * 20}%`
+                      },
+                      animate: { y: [-10, -30], opacity: [0.15, 0] },
+                      transition: {
+                        duration: 1.5,
+                        repeat: Number.POSITIVE_INFINITY,
+                        delay: i * 0.4
+                      },
+                      children: [
+                        stat.prefix,
+                        stat.value,
+                        stat.suffix
+                      ]
+                    },
+                    i
+                  ))
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                motion.div,
+                {
+                  className: "w-12 h-12 rounded-xl flex items-center justify-center mb-4 relative z-10",
+                  style: {
+                    background: statColor,
+                    border: `1px solid ${borderColor}`,
+                    transform: "translateZ(20px)"
+                  },
+                  animate: {
+                    boxShadow: [
+                      `0 0 0px ${stat.glow}`,
+                      `0 0 20px ${stat.glow}`,
+                      `0 0 0px ${stat.glow}`
+                    ]
+                  },
+                  transition: {
+                    repeat: Number.POSITIVE_INFINITY,
+                    duration: 2.5 + index2 * 0.3,
+                    ease: "easeInOut"
+                  },
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    stat.icon,
+                    {
+                      className: "w-6 h-6",
+                      style: { color: stat.color },
+                      "aria-hidden": "true"
+                    }
+                  )
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsx(
+                "div",
+                {
+                  className: "relative z-10 mb-2",
+                  style: { transform: "translateZ(30px)" },
+                  children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    CountUp,
+                    {
+                      value: stat.value,
+                      prefix: stat.prefix,
+                      suffix: stat.suffix,
+                      color: stat.color,
+                      glow: stat.glow
+                    }
+                  )
+                }
+              ),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                "div",
+                {
+                  className: "relative z-10",
+                  style: { transform: "translateZ(10px)" },
+                  children: [
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display font-bold text-foreground text-sm leading-tight", children: stat.label }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-xs mt-0.5", children: stat.sublabel })
+                  ]
+                }
+              )
+            ]
+          }
+        )
+      ]
+    }
+  );
+}
 function StatsSection() {
-  const sectionRef = reactExports.useRef(null);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
     "section",
     {
-      ref: sectionRef,
       id: "stats",
       "data-ocid": "stats.section",
       className: "relative py-20 overflow-hidden",
@@ -41625,83 +42449,7 @@ function StatsSection() {
               ]
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto", children: stats.map((stat, index2) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            motion.div,
-            {
-              "data-ocid": `stats.item.${index2 + 1}`,
-              initial: { opacity: 0, y: 40, scale: 0.92 },
-              whileInView: { opacity: 1, y: 0, scale: 1 },
-              viewport: { once: true },
-              transition: {
-                duration: 0.6,
-                delay: index2 * 0.12,
-                ease: [0.22, 1, 0.36, 1]
-              },
-              whileHover: { scale: 1.04, y: -4 },
-              className: "relative group rounded-2xl p-6 flex flex-col items-center text-center overflow-hidden",
-              style: {
-                background: "oklch(0.12 0.04 265 / 0.6)",
-                border: `1px solid ${stat.color.replace(")", " / 0.2)")}`,
-                backdropFilter: "blur(20px)"
-              },
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  "div",
-                  {
-                    className: "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
-                    style: {
-                      background: `radial-gradient(ellipse 80% 80% at 50% 0%, ${stat.color.replace(")", " / 0.1)")} 0%, transparent 70%)`
-                    }
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  motion.div,
-                  {
-                    className: "w-12 h-12 rounded-xl flex items-center justify-center mb-4 relative z-10",
-                    style: {
-                      background: `${stat.color.replace(")", " / 0.12)")}`,
-                      border: `1px solid ${stat.color.replace(")", " / 0.25)")}`
-                    },
-                    animate: {
-                      boxShadow: [
-                        `0 0 0px ${stat.glow}`,
-                        `0 0 20px ${stat.glow}`,
-                        `0 0 0px ${stat.glow}`
-                      ]
-                    },
-                    transition: {
-                      repeat: Number.POSITIVE_INFINITY,
-                      duration: 2.5 + index2 * 0.3,
-                      ease: "easeInOut"
-                    },
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                      stat.icon,
-                      {
-                        className: "w-6 h-6",
-                        style: { color: stat.color },
-                        "aria-hidden": "true"
-                      }
-                    )
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "relative z-10 mb-2", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                  CountUp,
-                  {
-                    value: stat.value,
-                    prefix: stat.prefix,
-                    suffix: stat.suffix,
-                    color: stat.color,
-                    glow: stat.glow
-                  }
-                ) }),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative z-10", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display font-bold text-foreground text-sm leading-tight", children: stat.label }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-xs mt-0.5", children: stat.sublabel })
-                ] })
-              ]
-            },
-            stat.label
-          )) }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto", children: stats.map((stat, index2) => /* @__PURE__ */ jsxRuntimeExports.jsx(StatCard3D, { stat, index: index2 }, stat.label)) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(
             motion.div,
             {
@@ -41839,21 +42587,44 @@ function TestimonialCard({
 }) {
   const gradClass = avatarGradients[index2 % avatarGradients.length];
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    "div",
+    motion.div,
     {
       "data-ocid": `testimonials.item.${index2 + 1}`,
-      className: "group relative flex-shrink-0 w-72 flex flex-col p-5 rounded-2xl glass border border-white/[0.07] hover:border-primary/30 transition-smooth shadow-subtle hover:shadow-elevated overflow-hidden",
+      className: "group relative flex-shrink-0 w-72 flex flex-col p-5 rounded-2xl glass border border-white/[0.07] hover:border-primary/30 transition-smooth shadow-subtle hover:shadow-elevated overflow-hidden cursor-default",
+      whileHover: {
+        y: -6,
+        rotateY: 4,
+        scale: 1.02,
+        transition: { duration: 0.25 }
+      },
+      style: { transformPerspective: 800 },
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsx(
           "div",
           {
             className: "absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none",
             style: {
-              background: "radial-gradient(ellipse at 50% 0%, oklch(0.6 0.23 265 / 0.1) 0%, transparent 70%)"
+              background: "radial-gradient(ellipse at 50% 0%, oklch(0.6 0.23 265 / 0.12) 0%, transparent 70%)"
             }
           }
         ),
         /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" }),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: "absolute top-3 right-3 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500",
+            "aria-hidden": "true",
+            children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+              motion.span,
+              {
+                animate: { rotate: [0, 360], scale: [1, 1.3, 1] },
+                transition: { duration: 3, repeat: Number.POSITIVE_INFINITY },
+                className: "text-amber-400/60 text-xs",
+                children: "✦"
+              }
+            )
+          }
+        ),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex items-center justify-between mb-3 relative z-10", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "w-8 h-8 rounded-full flex items-center justify-center bg-primary/10 border border-primary/20", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Quote, { className: "w-3.5 h-3.5 text-primary" }) }),
           /* @__PURE__ */ jsxRuntimeExports.jsx(StarRating, { count: t.rating })
@@ -41898,10 +42669,6 @@ function MarqueeRow({
   const doubled = [...cards, ...cards];
   const rowRef = reactExports.useRef(null);
   const [paused, setPaused] = reactExports.useState(false);
-  reactExports.useEffect(() => {
-    const el = rowRef.current;
-    if (!el) return;
-  }, []);
   const animName = direction === "left" ? "marqueeLeft" : "marqueeRight";
   const duration = `${cards.length * 14}s`;
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -41963,6 +42730,32 @@ function TestimonialsSection() {
             }
           }
         ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          "div",
+          {
+            className: "absolute inset-0 pointer-events-none overflow-hidden",
+            "aria-hidden": "true",
+            children: [...Array(6)].map((_, i) => /* @__PURE__ */ jsxRuntimeExports.jsx(
+              motion.div,
+              {
+                className: "absolute text-amber-400/20 text-sm select-none",
+                style: { left: `${10 + i * 15}%`, top: `${15 + i % 3 * 25}%` },
+                animate: {
+                  y: [0, -20, 0],
+                  opacity: [0.1, 0.3, 0.1],
+                  rotate: [0, 180, 360]
+                },
+                transition: {
+                  duration: 4 + i,
+                  repeat: Number.POSITIVE_INFINITY,
+                  delay: i * 0.7
+                },
+                children: "✦"
+              },
+              i
+            ))
+          }
+        ),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-7xl mx-auto px-6 lg:px-8", children: [
           /* @__PURE__ */ jsxRuntimeExports.jsxs(
             motion.div,
@@ -41999,9 +42792,11 @@ function TestimonialsSection() {
               children: socialProofStats.map((stat) => {
                 const Icon2 = stat.icon;
                 return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  "div",
+                  motion.div,
                   {
-                    className: "text-center py-3 px-2 rounded-xl glass border border-white/[0.06]",
+                    className: "text-center py-3 px-2 rounded-xl glass border border-white/[0.06] cursor-default",
+                    whileHover: { scale: 1.05, y: -3 },
+                    style: { transformPerspective: 600 },
                     children: [
                       /* @__PURE__ */ jsxRuntimeExports.jsx(Icon2, { className: "w-3.5 h-3.5 text-primary mx-auto mb-1 opacity-70" }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "font-display font-extrabold text-xl text-primary", children: stat.value }),
@@ -42084,10 +42879,7 @@ const homeRoute = createRoute({
   component: Home
 });
 const routeTree = rootRoute.addChildren([homeRoute]);
-const router = createRouter({
-  routeTree,
-  history: createHashHistory()
-});
+const router = createRouter({ routeTree });
 function App() {
   return /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(RouterProvider, { router }) });
 }

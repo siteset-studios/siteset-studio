@@ -1,158 +1,903 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Primary SEO -->
-    <title>Siteset Studio | Professional Website Design for Local Businesses in India</title>
-    <meta name="description" content="Get a professional website in 2-7 days starting at ₹3,999. Siteset Studio helps local businesses across India grow with high-converting websites, SEO, and Google Business optimization." />
-    <meta name="keywords" content="website design india, local business website, website development india, small business website, affordable website design, website for salon, website for restaurant, website for gym, google my business, local seo india, website design delhi, website design mumbai, website design bangalore, website design hyderabad, website design chennai, website design kolkata, website design pune, website design ahmedabad, website design jaipur, website design surat, professional website india, business website india, website for coaching centre, website for furniture shop, website developer india" />
-    <meta name="author" content="Siteset Studio" />
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-    <link rel="canonical" href="https://sitesetstudio.com/" />
+  <!-- ── Security ─────────────────────────────────────── -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline'; connect-src 'self' https://wa.me https://api.whatsapp.com; frame-ancestors 'none'" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="X-Frame-Options" content="DENY" />
 
-    <!-- Geo Tags -->
-    <meta name="geo.region" content="IN" />
-    <meta name="geo.country" content="India" />
-    <meta name="geo.placename" content="India" />
-    <meta name="ICBM" content="20.5937, 78.9629" />
+  <!-- ── Primary SEO ───────────────────────────────────── -->
+  <title>Siteset Studios — Professional Website Design for Indian Local Businesses</title>
+  <meta name="description" content="Get a professional website for your business in just 2–7 days, starting at ₹6,999. Siteset Studios helps Indian local businesses grow online with stunning websites, Local SEO, and Google Business Profile setup. Serving all of India." />
+  <meta name="keywords" content="website design India, local business website, affordable web design India, website for salon, website for restaurant, website for gym, Google My Business setup, local SEO India, professional website, Siteset Studios" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Siteset Studios" />
+  <meta name="geo.region" content="IN" />
+  <meta name="geo.country" content="India" />
+  <link rel="canonical" href="https://siteset-studios.github.io/siteset-studio/" />
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://sitesetstudio.com/" />
-    <meta property="og:title" content="Siteset Studio | Professional Website Design for Local Businesses in India" />
-    <meta property="og:description" content="Get a professional website in 2-7 days starting at ₹3,999. Siteset Studio helps local businesses across India grow with high-converting websites, SEO, and Google Business optimization." />
-    <meta property="og:image" content="https://sitesetstudio.com/assets/og-image.jpg" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Siteset Studio - Professional Website Design for Indian Businesses" />
-    <meta property="og:site_name" content="Siteset Studio" />
-    <meta property="og:locale" content="en_IN" />
+  <!-- ── Open Graph ───────────────────────────────────── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://siteset-studios.github.io/siteset-studio/" />
+  <meta property="og:title" content="Siteset Studios — Professional Websites for Indian Businesses" />
+  <meta property="og:description" content="Get your business online in 2–7 days starting ₹6,999. 50+ happy clients across India." />
+  <meta property="og:image" content="https://siteset-studios.github.io/siteset-studio/assets/siteset-logo-user.png" />
+  <meta property="og:locale" content="en_IN" />
+  <meta property="og:site_name" content="Siteset Studios" />
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@sitesetstudio" />
-    <meta name="twitter:title" content="Siteset Studio | Professional Website Design for Local Businesses in India" />
-    <meta name="twitter:description" content="Get a professional website in 2-7 days starting at ₹3,999. Siteset Studio helps local businesses across India." />
-    <meta name="twitter:image" content="https://sitesetstudio.com/assets/og-image.jpg" />
+  <!-- ── Twitter Card ─────────────────────────────────── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Siteset Studios — Professional Website Design" />
+  <meta name="twitter:description" content="Get your business online in 2–7 days starting ₹6,999." />
+  <meta name="twitter:image" content="https://siteset-studios.github.io/siteset-studio/assets/siteset-logo-user.png" />
 
-    <!-- Theme + Color -->
-    <meta name="theme-color" content="#0f172a" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="Siteset Studio" />
+  <!-- ── Theme ────────────────────────────────────────── -->
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="dark" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/siteset-studio/favicon.ico" />
+  <!-- ── Performance: Font preconnect ────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Structured Data: LocalBusiness -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Siteset Studio",
-      "description": "Professional website design and development agency helping local businesses across India grow with high-converting websites, SEO optimization, and Google Business Profile setup. Websites delivered in 2-7 days starting at ₹3,999.",
-      "url": "https://sitesetstudio.com",
-      "logo": "https://sitesetstudio.com/assets/logo.png",
-      "image": "https://sitesetstudio.com/assets/og-image.jpg",
-      "telephone": "+919330138050",
-      "priceRange": "₹₹",
-      "currenciesAccepted": "INR",
-      "paymentAccepted": "Cash, UPI, Bank Transfer",
-      "areaServed": {
-        "@type": "Country",
-        "name": "India"
-      },
-      "serviceType": [
-        "Website Design",
-        "Website Development",
-        "SEO Optimization",
-        "Google Business Profile Setup",
-        "E-Commerce Development",
-        "Landing Page Design",
-        "Local Business Website",
-        "Mobile Responsive Design"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Website Design Packages",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Classic Website Package"
-            },
-            "price": "6999",
-            "priceCurrency": "INR"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Royal Website Package"
-            },
-            "price": "8999",
-            "priceCurrency": "INR"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Premium Website Package"
-            },
-            "price": "12999",
-            "priceCurrency": "INR"
-          }
-        ]
-      },
-      "sameAs": [
-        "https://wa.me/919330138050"
-      ]
-    }
-    </script>
+  <link rel="stylesheet" href="./style.css" />
 
-    <!-- Structured Data: FAQPage -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "How long does it take to build a website?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "We deliver professional websites in 2-7 business days, depending on the package selected."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is the cost of a website in India?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our website packages start at ₹6,999 one-time with no monthly charges. We offer Classic (₹6,999), Royal (₹8,999), and Premium (₹12,999) packages."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do you build websites for local businesses in India?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, we specialize in building websites for local Indian businesses including salons, restaurants, gyms, coaching centres, furniture shops, and more across all major cities in India."
-          }
-        }
-      ]
-    }
-    </script>
-    <script type="module" crossorigin src="/siteset-studio/assets/index-CddkMlg5.js"></script>
-    <link rel="stylesheet" crossorigin href="/siteset-studio/assets/index-aPVofH4M.css">
-  </head>
-  <body>
-    <div id="root"></div>
-  </body>
+  <!-- ── Structured Data: LocalBusiness ──────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Siteset Studios",
+    "description": "Professional website design for Indian local businesses. Fast delivery in 2-7 days starting from ₹6,999.",
+    "url": "https://siteset-studios.github.io/siteset-studio/",
+    "email": "sitesetstudios@gmail.com",
+    "telephone": "+919330138050",
+    "address": { "@type": "PostalAddress", "addressCountry": "IN" },
+    "areaServed": "India",
+    "priceRange": "₹₹",
+    "serviceType": ["Website Design", "Local SEO", "Google Business Profile Setup", "Website Redesign"],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "50" }
+  }
+  </script>
+
+  <!-- ── FAQ Schema ───────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "How much does a website cost?", "acceptedAnswer": { "@type": "Answer", "text": "Our packages start from ₹6,999 (Classic), ₹8,999 (Royal), and ₹12,999 (Premium). All are one-time payments with no hidden fees." } },
+      { "@type": "Question", "name": "How long does it take to build a website?", "acceptedAnswer": { "@type": "Answer", "text": "We deliver websites in 2 to 7 days depending on the package and complexity of your requirements." } },
+      { "@type": "Question", "name": "Do you serve businesses outside your city?", "acceptedAnswer": { "@type": "Answer", "text": "Yes! We work with businesses across all of India — from Mumbai to Kolkata, Delhi to Chennai." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ── Cursor Glow (injected by JS, defined here for no-JS fallback) ── -->
+<div id="cursor-glow" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════
+     1. NAVBAR
+═══════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation" data-ocid="navbar">
+  <div class="container nav-inner">
+    <a href="#hero" class="nav-brand" aria-label="Siteset Studios - Home" data-ocid="navbar.brand_link">
+      <img src="./assets/siteset-logo-user.png" alt="Siteset Studios Logo" class="nav-logo" width="40" height="40" />
+      <span class="nav-name">Siteset <span>Studios</span></span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="#hero" data-ocid="navbar.home_link">Home</a></li>
+      <li><a href="#services" data-ocid="navbar.services_link">Services</a></li>
+      <li><a href="#pricing" data-ocid="navbar.pricing_link">Pricing</a></li>
+      <li><a href="#footer" data-ocid="navbar.contact_link">Contact</a></li>
+    </ul>
+
+    <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!%20I'd%20like%20a%20free%20demo."
+       class="btn btn-primary btn-sm nav-cta"
+       target="_blank" rel="noopener noreferrer"
+       data-ocid="navbar.get_demo_button"
+       aria-label="Get a free demo on WhatsApp">
+      Get Free Demo
+    </a>
+
+    <button type="button" class="hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false" aria-controls="mobile-menu" data-ocid="navbar.hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true" data-ocid="navbar.mobile_menu">
+  <a href="#hero" data-ocid="navbar.mobile_home_link">🏠 Home</a>
+  <a href="#services" data-ocid="navbar.mobile_services_link">⚡ Services</a>
+  <a href="#our-work" data-ocid="navbar.mobile_work_link">✅ Our Work</a>
+  <a href="#pricing" data-ocid="navbar.mobile_pricing_link">💎 Pricing</a>
+  <a href="#footer" data-ocid="navbar.mobile_contact_link">📞 Contact</a>
+  <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!%20I'd%20like%20a%20free%20demo."
+     class="btn btn-primary" target="_blank" rel="noopener"
+     data-ocid="navbar.mobile_demo_button">
+    🚀 Get Free Demo
+  </a>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     2. HERO
+═══════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-heading" data-ocid="hero.section">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid-lines"></div>
+    <!-- Floating orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+    <!-- Wireframe cube SVGs -->
+    <div class="shape shape-cube">
+      <svg width="110" height="110" viewBox="0 0 110 110" fill="none" aria-hidden="true">
+        <line x1="9" y1="9" x2="75" y2="9" stroke="rgba(59,130,246,0.5)" stroke-width="1.2"/>
+        <line x1="75" y1="9" x2="75" y2="75" stroke="rgba(59,130,246,0.5)" stroke-width="1.2"/>
+        <line x1="75" y1="75" x2="9" y2="75" stroke="rgba(59,130,246,0.5)" stroke-width="1.2"/>
+        <line x1="9" y1="75" x2="9" y2="9" stroke="rgba(59,130,246,0.5)" stroke-width="1.2"/>
+        <line x1="44" y1="1" x2="110" y2="1" stroke="rgba(59,130,246,0.3)" stroke-width="1.2"/>
+        <line x1="110" y1="1" x2="110" y2="67" stroke="rgba(59,130,246,0.3)" stroke-width="1.2"/>
+        <line x1="110" y1="67" x2="44" y2="67" stroke="rgba(59,130,246,0.3)" stroke-width="1.2"/>
+        <line x1="44" y1="67" x2="44" y2="1" stroke="rgba(59,130,246,0.3)" stroke-width="1.2"/>
+        <line x1="9" y1="9" x2="44" y2="1" stroke="rgba(59,130,246,0.4)" stroke-width="1.2"/>
+        <line x1="75" y1="9" x2="110" y2="1" stroke="rgba(59,130,246,0.4)" stroke-width="1.2"/>
+        <line x1="75" y1="75" x2="110" y2="67" stroke="rgba(59,130,246,0.4)" stroke-width="1.2"/>
+        <line x1="9" y1="75" x2="44" y2="67" stroke="rgba(59,130,246,0.4)" stroke-width="1.2"/>
+      </svg>
+    </div>
+    <div class="shape shape-ring">
+      <svg width="130" height="130" viewBox="0 0 130 130" fill="none" aria-hidden="true">
+        <ellipse cx="65" cy="65" rx="55" ry="21" stroke="rgba(99,102,241,0.45)" stroke-width="1.5"/>
+        <ellipse cx="65" cy="65" rx="33" ry="12" stroke="rgba(99,102,241,0.25)" stroke-width="1"/>
+        <ellipse cx="65" cy="65" rx="21" ry="55" stroke="rgba(99,102,241,0.18)" stroke-width="0.9" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+    <div class="shape shape-cube-2">
+      <svg width="70" height="70" viewBox="0 0 70 70" fill="none" aria-hidden="true">
+        <line x1="6" y1="6" x2="48" y2="6" stroke="rgba(59,130,246,0.4)" stroke-width="0.9"/>
+        <line x1="48" y1="6" x2="48" y2="48" stroke="rgba(59,130,246,0.4)" stroke-width="0.9"/>
+        <line x1="48" y1="48" x2="6" y2="48" stroke="rgba(59,130,246,0.4)" stroke-width="0.9"/>
+        <line x1="6" y1="48" x2="6" y2="6" stroke="rgba(59,130,246,0.4)" stroke-width="0.9"/>
+        <line x1="27" y1="1" x2="69" y2="1" stroke="rgba(59,130,246,0.25)" stroke-width="0.9"/>
+        <line x1="69" y1="1" x2="69" y2="43" stroke="rgba(59,130,246,0.25)" stroke-width="0.9"/>
+        <line x1="69" y1="43" x2="27" y2="43" stroke="rgba(59,130,246,0.25)" stroke-width="0.9"/>
+        <line x1="27" y1="43" x2="27" y2="1" stroke="rgba(59,130,246,0.25)" stroke-width="0.9"/>
+        <line x1="6" y1="6" x2="27" y2="1" stroke="rgba(59,130,246,0.3)" stroke-width="0.9"/>
+        <line x1="48" y1="6" x2="69" y2="1" stroke="rgba(59,130,246,0.3)" stroke-width="0.9"/>
+        <line x1="48" y1="48" x2="69" y2="43" stroke="rgba(59,130,246,0.3)" stroke-width="0.9"/>
+        <line x1="6" y1="48" x2="27" y2="43" stroke="rgba(59,130,246,0.3)" stroke-width="0.9"/>
+      </svg>
+    </div>
+    <div class="shape shape-ring-2">
+      <svg width="90" height="90" viewBox="0 0 90 90" fill="none" aria-hidden="true">
+        <ellipse cx="45" cy="45" rx="38" ry="14" stroke="rgba(37,99,235,0.3)" stroke-width="1.1"/>
+        <ellipse cx="45" cy="45" rx="14" ry="38" stroke="rgba(37,99,235,0.18)" stroke-width="0.8" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+    <div class="shape shape-dot"></div>
+    <div class="shape shape-dot-2"></div>
+    <div class="shape shape-line"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-badge" data-ocid="hero.badge">
+      🚀 India's #1 Web Agency · Websites from ₹6,999
+    </div>
+
+    <h1 class="hero-title" id="hero-heading" data-ocid="hero.headline">
+      Your Business Deserves a<br />
+      <span class="gradient-text">Website That Works</span>
+    </h1>
+
+    <p class="hero-sub" data-ocid="hero.subheading">
+      We build stunning, conversion-focused websites for Indian local businesses — salons, restaurants, gyms, coaching centres, and more. Go live in 2–7 days, guaranteed.
+    </p>
+
+    <div class="hero-trust" role="list" aria-label="Trust indicators" data-ocid="hero.trust_indicators">
+      <span class="trust-badge" role="listitem" data-ocid="hero.trust_item.1">⚡ 2–7 Day Delivery</span>
+      <span class="trust-badge" role="listitem" data-ocid="hero.trust_item.2">🇮🇳 50+ Indian Businesses</span>
+      <span class="trust-badge" role="listitem" data-ocid="hero.trust_item.3">⭐ 4.9 Avg Rating</span>
+      <span class="trust-badge" role="listitem" data-ocid="hero.trust_item.4">💯 100% Satisfaction</span>
+    </div>
+
+    <div class="hero-ctas">
+      <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!%20I'd%20like%20a%20free%20demo."
+         class="btn btn-primary"
+         target="_blank" rel="noopener noreferrer"
+         data-ocid="hero.get_demo_button"
+         aria-label="Get a free demo on WhatsApp">
+        🚀 Get Free Demo
+      </a>
+      <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!"
+         class="btn btn-whatsapp"
+         target="_blank" rel="noopener noreferrer"
+         data-ocid="hero.whatsapp_button"
+         aria-label="Chat on WhatsApp">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        WhatsApp Us
+      </a>
+    </div>
+
+    <p class="hero-note">
+      Starting from <strong>₹6,999</strong> &nbsp;•&nbsp; Delivery in <strong>2–7 days</strong> &nbsp;•&nbsp; No hidden fees
+    </p>
+  </div>
+
+  <!-- Scroll indicator -->
+  <button type="button" class="scroll-indicator" id="hero-scroll-btn" aria-label="Scroll to services">
+    <span class="scroll-text">Scroll</span>
+    <div class="scroll-mouse">
+      <div class="scroll-dot"></div>
+    </div>
+  </button>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     3. REALITY / STATS
+═══════════════════════════════════════ -->
+<section id="stats" class="section" aria-labelledby="stats-heading" data-ocid="stats.section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-badge">📊 Our Numbers</div>
+      <h2 class="section-title" id="stats-heading">Results That Speak for Themselves</h2>
+      <p class="section-sub">Real numbers, real growth — for real Indian businesses just like yours.</p>
+    </div>
+
+    <div class="stats-grid">
+      <div class="stat-card fade-up delay-1" data-countup data-target="50" data-suffix="+" data-ocid="stats.item.1">
+        <div class="stat-icon">😊</div>
+        <div class="stat-number"><span class="counter">0</span><span class="accent">+</span></div>
+        <div class="stat-label">Happy Clients</div>
+      </div>
+      <div class="stat-card fade-up delay-2" data-countup data-target="50" data-prefix="₹" data-suffix="L+" data-ocid="stats.item.2">
+        <div class="stat-icon">💰</div>
+        <div class="stat-number"><span class="accent">₹</span><span class="counter">0</span><span class="accent">L+</span></div>
+        <div class="stat-label">Revenue Generated for Clients</div>
+      </div>
+      <div class="stat-card fade-up delay-3" data-ocid="stats.item.3">
+        <div class="stat-icon">⭐</div>
+        <div class="stat-number"><span class="counter-static">4.9</span><span class="accent">★</span></div>
+        <div class="stat-label">Average Google Rating</div>
+      </div>
+      <div class="stat-card fade-up delay-4" data-ocid="stats.item.4">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-number"><span class="counter-static">100</span><span class="accent">%</span></div>
+        <div class="stat-label">Satisfaction Guaranteed</div>
+      </div>
+    </div>
+
+    <div class="fade-up delay-5">
+      <div class="stats-india-badge">
+        🇮🇳 Over 50+ customers online presence — proudly serving businesses all across India
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     4. BEFORE / AFTER SLIDER
+═══════════════════════════════════════ -->
+<section id="before-after" class="section" aria-labelledby="ba-heading" data-ocid="before-after.section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-badge">✨ The Difference</div>
+      <h2 class="section-title" id="ba-heading">See the Transformation</h2>
+      <p class="section-sub">Drag the slider to see how we turn an outdated web presence into a premium brand experience.</p>
+    </div>
+
+    <div class="slider-container fade-up" id="slider" role="img" aria-label="Before and after website comparison slider" data-ocid="before-after.slider">
+      <!-- BEFORE panel (intentionally ugly 2000s) -->
+      <div class="panel-before" aria-label="Before: outdated website design">
+        <div class="before-nav">
+          <div class="before-logo">💈 RAJU HAIR STYLE</div>
+          <div class="before-nav-links">
+            <a href="#">HOME</a>
+            <a href="#">SERVICES</a>
+            <a href="#">CONTACT</a>
+          </div>
+        </div>
+        <div class="before-marquee">
+          <span>★★★ WELCOME TO RAJU HAIR STYLE ★★★ BEST SALON IN TOWN ★★★ CALL NOW: 9876543210 ★★★ SPECIAL OFFERS ★★★</span>
+        </div>
+        <div class="before-hero">
+          <h1>💈 RAJU HAIR STYLE 💈<br/>Best Saloon in Town!!</h1>
+          <p>We do: Haircut • Shave • Colour • Facial<br/>📞 Call: 9876543210</p>
+          <table class="before-table">
+            <tr><td>Haircut</td><td>₹ 50/-</td></tr>
+            <tr><td>Shave</td><td>₹ 30/-</td></tr>
+            <tr><td>Facial</td><td>₹ 100/-</td></tr>
+            <tr><td>Hair Colour</td><td>₹ 200/-</td></tr>
+          </table>
+          <button type="button" class="before-btn">📞 CALL FOR APPOINTMENT!!</button>
+        </div>
+        <div class="before-footer">
+          Copyright © 2008 Raju Hair Style | Made by my nephew | Best viewed in Internet Explorer 6
+        </div>
+      </div>
+
+      <!-- AFTER panel (gold/dark luxury — NOT site blue theme) -->
+      <div class="panel-after" aria-label="After: premium website redesign">
+        <div class="after-nav">
+          <div class="after-logo-text">Raju Hair Style</div>
+          <div class="after-nav-links">
+            <a href="#">Services</a>
+            <a href="#">Gallery</a>
+            <a href="#">Book Now</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+        <div class="after-hero">
+          <div class="after-divider"></div>
+          <h1>Premium <span>Hair &amp; Grooming</span></h1>
+          <p class="after-tagline">Est. 2008 · Expert Stylists · Walk-ins Welcome</p>
+          <div class="after-services">
+            <span class="after-svc-badge">Precision Haircuts</span>
+            <span class="after-svc-badge">Clean Shave &amp; Beard</span>
+            <span class="after-svc-badge">Hair Colour</span>
+            <span class="after-svc-badge">Luxury Facial</span>
+          </div>
+          <div class="after-cta">Book Appointment</div>
+          <p class="after-contact">📞 98765 43210 &nbsp;·&nbsp; Open 7 Days</p>
+        </div>
+        <div class="after-footer">
+          <span>© 2024 Raju Hair Style. All rights reserved.</span>
+          <span>★★★★★ &nbsp;4.9/5 on Google</span>
+        </div>
+      </div>
+
+      <!-- Slider handle -->
+      <div class="slider-handle" id="slider-handle" aria-hidden="true">
+        <div class="slider-knob"></div>
+      </div>
+      <div class="slider-label-before" aria-hidden="true">BEFORE</div>
+      <div class="slider-label-after" aria-hidden="true">AFTER</div>
+    </div>
+
+    <p class="slider-instruction fade-up">👆 Drag to compare &nbsp;·&nbsp; Touch and drag on mobile</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     5. PROBLEM / SOLUTION
+═══════════════════════════════════════ -->
+<section id="problem-solution" class="section" aria-labelledby="ps-heading" data-ocid="problem-solution.section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-badge">🔄 The Reality</div>
+      <h2 class="section-title" id="ps-heading">Without a Website, You're Invisible</h2>
+    </div>
+
+    <div class="ps-container fade-up">
+      <!-- Problem panel -->
+      <div class="ps-panel active" id="ps-problem" aria-live="polite" data-ocid="problem-solution.problem_panel">
+        <div class="ps-header">
+          <span class="ps-icon">😰</span>
+          <h3 class="ps-title-lg problem-color">The Problem</h3>
+        </div>
+        <div class="ps-items" role="list">
+          <div class="ps-item problem" role="listitem"><span class="ps-item-icon">📵</span><span>No online presence — customers can't find you</span></div>
+          <div class="ps-item problem" role="listitem"><span class="ps-item-icon">😔</span><span>Losing customers to competitors with websites</span></div>
+          <div class="ps-item problem" role="listitem"><span class="ps-item-icon">🧾</span><span>Unprofessional look — people don't trust you</span></div>
+          <div class="ps-item problem" role="listitem"><span class="ps-item-icon">🔍</span><span>Invisible on Google — zero local SEO ranking</span></div>
+        </div>
+        <div class="ps-progress-bar"><div class="ps-progress problem" id="ps-bar"></div></div>
+      </div>
+
+      <!-- Solution panel -->
+      <div class="ps-panel" id="ps-solution" aria-live="polite" data-ocid="problem-solution.solution_panel">
+        <div class="ps-header">
+          <span class="ps-icon">🚀</span>
+          <h3 class="ps-title-lg solution-color">Our Solution</h3>
+        </div>
+        <div class="ps-items" role="list">
+          <div class="ps-item solution" role="listitem"><span class="ps-item-icon">⚡</span><span>Fast 2–7 day delivery — go live this week</span></div>
+          <div class="ps-item solution" role="listitem"><span class="ps-item-icon">🏆</span><span>Beat competitors — own your local online market</span></div>
+          <div class="ps-item solution" role="listitem"><span class="ps-item-icon">💎</span><span>Build credibility with a premium professional site</span></div>
+          <div class="ps-item solution" role="listitem"><span class="ps-item-icon">📍</span><span>Rank locally on Google Maps &amp; Search</span></div>
+        </div>
+        <div class="ps-progress-bar"><div class="ps-progress solution" id="ps-bar-sol"></div></div>
+      </div>
+
+      <!-- Toggle dots -->
+      <div class="ps-toggle-dots" role="tablist" aria-label="Problem Solution toggle">
+        <button type="button" class="ps-dot active" id="dot-0" role="tab" aria-selected="true" aria-label="Show problems" data-ocid="problem-solution.tab.1"></button>
+        <button type="button" class="ps-dot" id="dot-1" role="tab" aria-selected="false" aria-label="Show solutions" data-ocid="problem-solution.tab.2"></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     6. SERVICES
+═══════════════════════════════════════ -->
+<section id="services" class="section" aria-labelledby="services-heading" data-ocid="services.section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-badge">⚡ Services</div>
+      <h2 class="section-title" id="services-heading">Everything Your Business Needs</h2>
+      <p class="section-sub">End-to-end digital solutions built for Indian local businesses at prices that make sense.</p>
+    </div>
+
+    <div class="trust-bar fade-up">
+      <div class="trust-item"><span class="trust-item-icon">⚡</span><span>Fast Delivery</span></div>
+      <div class="trust-item"><span class="trust-item-icon">📱</span><span>Mobile Optimized</span></div>
+      <div class="trust-item"><span class="trust-item-icon">🔍</span><span>SEO Ready</span></div>
+      <div class="trust-item"><span class="trust-item-icon">✅</span><span>100% Satisfaction</span></div>
+    </div>
+
+    <div class="services-grid">
+      <!-- Card 1: Website Design -->
+      <div class="service-card fade-up delay-1" data-ocid="services.item.1">
+        <div class="service-icon-wrap" aria-hidden="true">🌐</div>
+        <h3 class="service-title">Website Design</h3>
+        <p class="service-desc">Brand-new, stunning website built from scratch — optimized for speed, mobile, and conversions.</p>
+        <button type="button" class="service-learn-btn" aria-expanded="false" aria-controls="detail-1" data-detail="detail-1" data-ocid="services.learn_more_button.1">
+          Learn More <span class="arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="service-detail" id="detail-1" role="region">
+          <div class="service-detail-inner">
+            <p class="service-detail-intro">A complete website built to attract, impress, and convert your visitors into paying customers.</p>
+            <div class="service-feature-list">
+              <div class="service-feature-item">Custom design tailored to your brand identity</div>
+              <div class="service-feature-item">Mobile-first responsive design for all devices</div>
+              <div class="service-feature-item">Fast loading speed (under 3 seconds)</div>
+              <div class="service-feature-item">Contact form, WhatsApp button, Google Maps integration</div>
+              <div class="service-feature-item">Basic on-page SEO for local search visibility</div>
+              <div class="service-feature-item">Free domain + hosting setup guidance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Website Redesign -->
+      <div class="service-card fade-up delay-2" data-ocid="services.item.2">
+        <div class="service-icon-wrap" aria-hidden="true">🔄</div>
+        <h3 class="service-title">Website Redesign</h3>
+        <p class="service-desc">Transform your old, outdated website into a modern, high-converting digital asset.</p>
+        <button type="button" class="service-learn-btn" aria-expanded="false" aria-controls="detail-2" data-detail="detail-2" data-ocid="services.learn_more_button.2">
+          Learn More <span class="arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="service-detail" id="detail-2" role="region">
+          <div class="service-detail-inner">
+            <p class="service-detail-intro">Give your existing website a complete makeover — modern design, better UX, and improved performance.</p>
+            <div class="service-feature-list">
+              <div class="service-feature-item">Complete visual and UX overhaul</div>
+              <div class="service-feature-item">Migrate all existing content and pages</div>
+              <div class="service-feature-item">Improve page speed and Core Web Vitals</div>
+              <div class="service-feature-item">Update for mobile-first experience</div>
+              <div class="service-feature-item">Modernise layout, fonts, and colours</div>
+              <div class="service-feature-item">Improved calls-to-action for more leads</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Local SEO -->
+      <div class="service-card fade-up delay-3" data-ocid="services.item.3">
+        <div class="service-icon-wrap" aria-hidden="true">📍</div>
+        <h3 class="service-title">Local SEO</h3>
+        <p class="service-desc">Get found on Google when local customers search for services you offer in your city.</p>
+        <button type="button" class="service-learn-btn" aria-expanded="false" aria-controls="detail-3" data-detail="detail-3" data-ocid="services.learn_more_button.3">
+          Learn More <span class="arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="service-detail" id="detail-3" role="region">
+          <div class="service-detail-inner">
+            <p class="service-detail-intro">Rank in top 3 Google results when your ideal customers search locally. More traffic = more sales.</p>
+            <div class="service-feature-list">
+              <div class="service-feature-item">Keyword research for local intent searches</div>
+              <div class="service-feature-item">On-page SEO: meta tags, headings, schema markup</div>
+              <div class="service-feature-item">Local citations and directory submissions</div>
+              <div class="service-feature-item">Google Search Console setup and monitoring</div>
+              <div class="service-feature-item">Monthly ranking reports</div>
+              <div class="service-feature-item">Competitor analysis and gap strategy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Google Business Profile -->
+      <div class="service-card fade-up delay-4" data-ocid="services.item.4">
+        <div class="service-icon-wrap" aria-hidden="true">📌</div>
+        <h3 class="service-title">Google Business Profile</h3>
+        <p class="service-desc">Dominate Google Maps and appear in local search results with a fully optimised GMB profile.</p>
+        <button type="button" class="service-learn-btn" aria-expanded="false" aria-controls="detail-4" data-detail="detail-4" data-ocid="services.learn_more_button.4">
+          Learn More <span class="arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="service-detail" id="detail-4" role="region">
+          <div class="service-detail-inner">
+            <p class="service-detail-intro">Your Google Business Profile is your most powerful free tool. We set it up and optimise it for maximum visibility.</p>
+            <div class="service-feature-list">
+              <div class="service-feature-item">Complete GMB profile setup and verification</div>
+              <div class="service-feature-item">Category optimisation and service listings</div>
+              <div class="service-feature-item">Professional photos upload (up to 20)</div>
+              <div class="service-feature-item">Q&amp;A setup and review response strategy</div>
+              <div class="service-feature-item">Google Maps ranking optimisation</div>
+              <div class="service-feature-item">Weekly Google Posts for visibility boost</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom checklist -->
+    <div class="services-checklist fade-up">
+      <div class="checklist-title">Every package includes <span>zero hidden surprises</span> 🎯</div>
+      <div class="checklist-grid">
+        <div class="checklist-item"><span class="check-emoji">✅</span> Free domain guidance</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> Mobile responsive design</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> WhatsApp button integration</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> Google Maps embed</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> Fast page load speed</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> On-page SEO basics</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> Revision rounds included</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> 30-day post-launch support</div>
+        <div class="checklist-item"><span class="check-emoji">✅</span> No technical knowledge needed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     7. OUR WORK / PROCESS
+═══════════════════════════════════════ -->
+<section id="our-work" class="section section-alt" aria-labelledby="work-heading" data-ocid="our-work.section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-badge">🛠️ How We Work</div>
+      <h2 class="section-title" id="work-heading">Simple Process. Real Results.</h2>
+      <p class="section-sub">From idea to live website in as little as 48 hours — with zero technical knowledge required from you.</p>
+    </div>
+
+    <div class="process-steps">
+      <div class="process-step fade-up delay-1" data-ocid="our-work.step.1">
+        <div class="step-num">1</div>
+        <div class="step-icon" aria-hidden="true">💬</div>
+        <h3 class="step-title">You Share Your Vision</h3>
+        <p class="step-desc">Tell us about your business, your goals, and what you want on your site. Just a WhatsApp message is enough.</p>
+      </div>
+      <div class="process-step fade-up delay-2" data-ocid="our-work.step.2">
+        <div class="step-num">2</div>
+        <div class="step-icon" aria-hidden="true">🎨</div>
+        <h3 class="step-title">We Design &amp; Build</h3>
+        <p class="step-desc">Our expert team creates a stunning, custom design and develops your fully functional website.</p>
+      </div>
+      <div class="process-step fade-up delay-3" data-ocid="our-work.step.3">
+        <div class="step-num">3</div>
+        <div class="step-icon" aria-hidden="true">✅</div>
+        <h3 class="step-title">Review &amp; Approve</h3>
+        <p class="step-desc">We share a live preview. You request changes, we make them — until you're 100% happy.</p>
+      </div>
+      <div class="process-step fade-up delay-4" data-ocid="our-work.step.4">
+        <div class="step-num">4</div>
+        <div class="step-icon" aria-hidden="true">🚀</div>
+        <h3 class="step-title">Go Live!</h3>
+        <p class="step-desc">Your website goes live. We handle the technical setup and stay available for 30 days post-launch support.</p>
+      </div>
+    </div>
+
+    <div class="work-trust-grid">
+      <div class="work-trust-card fade-up delay-1"><div class="work-trust-icon" aria-hidden="true">🏢</div><div class="work-trust-label">50+ Businesses</div><div class="work-trust-sub">Transformed online</div></div>
+      <div class="work-trust-card fade-up delay-2"><div class="work-trust-icon" aria-hidden="true">💯</div><div class="work-trust-label">100% Satisfaction</div><div class="work-trust-sub">Across all projects</div></div>
+      <div class="work-trust-card fade-up delay-3"><div class="work-trust-icon" aria-hidden="true">⚡</div><div class="work-trust-label">2–7 Day Delivery</div><div class="work-trust-sub">Fastest in the market</div></div>
+      <div class="work-trust-card fade-up delay-4"><div class="work-trust-icon" aria-hidden="true">🔁</div><div class="work-trust-label">Unlimited Revisions</div><div class="work-trust-sub">Until you're happy</div></div>
+    </div>
+
+    <div class="results-banner fade-up">
+      <div><div class="result-metric-num">3x</div><div class="result-metric-label">More Customers on Average</div></div>
+      <div><div class="result-metric-num">₹50L+</div><div class="result-metric-label">Revenue Generated for Clients</div></div>
+      <div><div class="result-metric-num">Top 3</div><div class="result-metric-label">Google Maps Ranking for Clients</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     8. TESTIMONIALS
+═══════════════════════════════════════ -->
+<section id="testimonials" class="section" aria-labelledby="test-heading" data-ocid="testimonials.section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-badge">💬 Reviews</div>
+      <h2 class="section-title" id="test-heading">What Our Clients Say</h2>
+      <p class="section-sub">Real reviews from Indian business owners who grew their business with us.</p>
+    </div>
+  </div>
+
+  <!-- Row 1: scrolls left -->
+  <div class="testimonial-track-wrap fade-up" aria-label="Client testimonials, auto-scrolling">
+    <div class="testimonial-track" role="list">
+      <div class="testimonial-card" role="listitem" data-ocid="testimonials.item.1"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"Siteset Studios gave my salon a website that looks absolutely stunning. My bookings have tripled since going live!"</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">R</div><div><div class="tcard-name">Raj Mehta</div><div class="tcard-role">Owner, Raj's Premium Salon · Mumbai</div></div></div><div class="tcard-result">📈 3x more bookings in 2 months</div></div>
+      <div class="testimonial-card" role="listitem" data-ocid="testimonials.item.2"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"I was sceptical at first, but they delivered in just 4 days! The website is beautiful and already ranking on Google."</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">P</div><div><div class="tcard-name">Priya Sharma</div><div class="tcard-role">Owner, Priya's Coaching Centre · Delhi</div></div></div><div class="tcard-result">🔍 Ranking Top 3 in local search</div></div>
+      <div class="testimonial-card" role="listitem" data-ocid="testimonials.item.3"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"Best investment for my restaurant! We get 10–15 new table enquiries every week through our website now."</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">A</div><div><div class="tcard-name">Ahmed Khan</div><div class="tcard-role">Owner, Khan's Biryani House · Hyderabad</div></div></div><div class="tcard-result">🍽️ 10–15 new enquiries/week</div></div>
+      <div class="testimonial-card" role="listitem" data-ocid="testimonials.item.4"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"Professional, fast, and very affordable. My boutique now looks world-class online. Highly recommend!"</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">S</div><div><div class="tcard-name">Sunita Patel</div><div class="tcard-role">Owner, Sunita's Fashion Boutique · Ahmedabad</div></div></div><div class="tcard-result">💰 ₹80K extra revenue first month</div></div>
+      <div class="testimonial-card" role="listitem" data-ocid="testimonials.item.5"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"My gym membership sales went up 40% after the website launched. The Google Maps setup was a game changer."</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">V</div><div><div class="tcard-name">Vijay Reddy</div><div class="tcard-role">Owner, FitZone Gym · Bangalore</div></div></div><div class="tcard-result">💪 40% increase in memberships</div></div>
+      <div class="testimonial-card" role="listitem" data-ocid="testimonials.item.6"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"I never knew a website could make such a difference. My spa bookings are full 2 weeks in advance now!"</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">M</div><div><div class="tcard-name">Meera Nair</div><div class="tcard-role">Owner, Meera's Wellness Spa · Kochi</div></div></div><div class="tcard-result">📅 Fully booked 2 weeks ahead</div></div>
+      <!-- Duplicates for seamless loop -->
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"Siteset Studios gave my salon a website that looks absolutely stunning. My bookings have tripled since going live!"</p><div class="tcard-footer"><div class="tcard-avatar">R</div><div><div class="tcard-name">Raj Mehta</div><div class="tcard-role">Owner, Raj's Premium Salon · Mumbai</div></div></div><div class="tcard-result">📈 3x more bookings in 2 months</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"I was sceptical at first, but they delivered in just 4 days! The website is beautiful and already ranking on Google."</p><div class="tcard-footer"><div class="tcard-avatar">P</div><div><div class="tcard-name">Priya Sharma</div><div class="tcard-role">Owner, Priya's Coaching Centre · Delhi</div></div></div><div class="tcard-result">🔍 Ranking Top 3 in local search</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"Best investment for my restaurant! We get 10–15 new table enquiries every week through our website now."</p><div class="tcard-footer"><div class="tcard-avatar">A</div><div><div class="tcard-name">Ahmed Khan</div><div class="tcard-role">Owner, Khan's Biryani House · Hyderabad</div></div></div><div class="tcard-result">🍽️ 10–15 new enquiries/week</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"Professional, fast, and very affordable. My boutique now looks world-class online. Highly recommend!"</p><div class="tcard-footer"><div class="tcard-avatar">S</div><div><div class="tcard-name">Sunita Patel</div><div class="tcard-role">Owner, Sunita's Fashion Boutique · Ahmedabad</div></div></div><div class="tcard-result">💰 ₹80K extra revenue first month</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"My gym membership sales went up 40% after the website launched. The Google Maps setup was a game changer."</p><div class="tcard-footer"><div class="tcard-avatar">V</div><div><div class="tcard-name">Vijay Reddy</div><div class="tcard-role">Owner, FitZone Gym · Bangalore</div></div></div><div class="tcard-result">💪 40% increase in memberships</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"I never knew a website could make such a difference. My spa bookings are full 2 weeks in advance now!"</p><div class="tcard-footer"><div class="tcard-avatar">M</div><div><div class="tcard-name">Meera Nair</div><div class="tcard-role">Owner, Meera's Wellness Spa · Kochi</div></div></div><div class="tcard-result">📅 Fully booked 2 weeks ahead</div></div>
+    </div>
+  </div>
+
+  <!-- Row 2: scrolls right -->
+  <div class="testimonial-track-wrap fade-up delay-2" aria-label="More client testimonials">
+    <div class="testimonial-track reverse" role="list">
+      <div class="testimonial-card" role="listitem"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"Very smooth process. I just shared my ideas on WhatsApp and they built exactly what I imagined in 5 days."</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">K</div><div><div class="tcard-name">Kiran Joshi</div><div class="tcard-role">Owner, Kiran's Furniture Store · Pune</div></div></div><div class="tcard-result">🛋️ 25% more walk-in customers</div></div>
+      <div class="testimonial-card" role="listitem"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"The price is unbeatable and the quality is outstanding. My competitors are still wondering how I grew so fast!"</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">D</div><div><div class="tcard-name">Deepak Gupta</div><div class="tcard-role">Owner, Gupta's Clinic · Jaipur</div></div></div><div class="tcard-result">🏥 60% more appointment bookings</div></div>
+      <div class="testimonial-card" role="listitem"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"Great team, fast delivery, excellent design. My photography business gets 3x more enquiries after the website."</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">N</div><div><div class="tcard-name">Neha Singh</div><div class="tcard-role">Owner, Neha Photography · Lucknow</div></div></div><div class="tcard-result">📸 3x more enquiries</div></div>
+      <div class="testimonial-card" role="listitem"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"I was running my catering business on WhatsApp only. Now I have a proper website and it looks so professional!"</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">F</div><div><div class="tcard-name">Fatima Begum</div><div class="tcard-role">Owner, Fatima's Catering · Chennai</div></div></div><div class="tcard-result">🍱 Revenue doubled in 3 months</div></div>
+      <div class="testimonial-card" role="listitem"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"My hardware store website ranks on page 1 of Google for multiple keywords. Sales are up significantly!"</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">H</div><div><div class="tcard-name">Harish Verma</div><div class="tcard-role">Owner, Verma Hardware · Chandigarh</div></div></div><div class="tcard-result">🔧 Page 1 Google ranking achieved</div></div>
+      <div class="testimonial-card" role="listitem"><div class="tcard-stars" aria-label="5 stars">★★★★★</div><p class="tcard-quote">"The team is super responsive and patient. They explained everything clearly and the result exceeded my expectations."</p><div class="tcard-footer"><div class="tcard-avatar" aria-hidden="true">L</div><div><div class="tcard-name">Lakshmi Rao</div><div class="tcard-role">Owner, Lakshmi's Tiffin Service · Hyderabad</div></div></div><div class="tcard-result">🥘 50+ new regular customers</div></div>
+      <!-- Duplicates for seamless loop -->
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"Very smooth process. I just shared my ideas on WhatsApp and they built exactly what I imagined in 5 days."</p><div class="tcard-footer"><div class="tcard-avatar">K</div><div><div class="tcard-name">Kiran Joshi</div><div class="tcard-role">Owner, Kiran's Furniture Store · Pune</div></div></div><div class="tcard-result">🛋️ 25% more walk-in customers</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"The price is unbeatable and the quality is outstanding. My competitors are still wondering how I grew so fast!"</p><div class="tcard-footer"><div class="tcard-avatar">D</div><div><div class="tcard-name">Deepak Gupta</div><div class="tcard-role">Owner, Gupta's Clinic · Jaipur</div></div></div><div class="tcard-result">🏥 60% more appointment bookings</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"Great team, fast delivery, excellent design. My photography business gets 3x more enquiries after the website."</p><div class="tcard-footer"><div class="tcard-avatar">N</div><div><div class="tcard-name">Neha Singh</div><div class="tcard-role">Owner, Neha Photography · Lucknow</div></div></div><div class="tcard-result">📸 3x more enquiries</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"I was running my catering business on WhatsApp only. Now I have a proper website and it looks so professional!"</p><div class="tcard-footer"><div class="tcard-avatar">F</div><div><div class="tcard-name">Fatima Begum</div><div class="tcard-role">Owner, Fatima's Catering · Chennai</div></div></div><div class="tcard-result">🍱 Revenue doubled in 3 months</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"My hardware store website ranks on page 1 of Google for multiple keywords. Sales are up significantly!"</p><div class="tcard-footer"><div class="tcard-avatar">H</div><div><div class="tcard-name">Harish Verma</div><div class="tcard-role">Owner, Verma Hardware · Chandigarh</div></div></div><div class="tcard-result">🔧 Page 1 Google ranking achieved</div></div>
+      <div class="testimonial-card" role="listitem" aria-hidden="true"><div class="tcard-stars">★★★★★</div><p class="tcard-quote">"The team is super responsive and patient. They explained everything clearly and the result exceeded my expectations."</p><div class="tcard-footer"><div class="tcard-avatar">L</div><div><div class="tcard-name">Lakshmi Rao</div><div class="tcard-role">Owner, Lakshmi's Tiffin Service · Hyderabad</div></div></div><div class="tcard-result">🥘 50+ new regular customers</div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     9. PRICING
+═══════════════════════════════════════ -->
+<section id="pricing" class="section section-alt" aria-labelledby="pricing-heading" data-ocid="pricing.section">
+  <div class="container">
+    <div class="section-header fade-up">
+      <div class="section-badge">💎 Pricing</div>
+      <h2 class="section-title" id="pricing-heading">Transparent, Honest Pricing</h2>
+      <p class="section-sub">No hidden fees. No surprises. Choose a plan and go live in 2–7 days.</p>
+    </div>
+
+    <div class="pricing-urgency fade-up">
+      <span class="urgency-dot"></span>
+      <span>🔥 Limited Time Offer — Slots filling up fast this month!</span>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- Classic -->
+      <div class="pricing-card fade-up delay-1" id="price-card-1" data-ocid="pricing.item.1">
+        <div class="plan-badge badge-starter">⚡ Starter Pick</div>
+        <h3 class="plan-name">Classic</h3>
+        <p class="plan-tagline">Perfect for getting started online</p>
+        <div class="plan-pricing">
+          <div class="plan-original">₹9,999</div>
+          <div class="plan-price"><span>₹</span>6,999</div>
+          <div class="plan-savings">💰 Save ₹3,000</div>
+        </div>
+        <ul class="plan-features">
+          <li class="plan-feature">5-page professional website</li>
+          <li class="plan-feature">Mobile responsive design</li>
+          <li class="plan-feature">Contact form + WhatsApp button</li>
+          <li class="plan-feature">Google Maps integration</li>
+          <li class="plan-feature">Basic on-page SEO</li>
+          <li class="plan-feature">1 revision round</li>
+          <li class="plan-feature">Delivery in 3–7 days</li>
+        </ul>
+        <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!%20I'm%20interested%20in%20the%20Classic%20plan%20(%E2%82%B96%2C999)."
+           class="pricing-cta pricing-cta-outline"
+           target="_blank" rel="noopener noreferrer"
+           data-ocid="pricing.get_started_button.1"
+           aria-label="Get Classic plan on WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get Classic Plan
+        </a>
+      </div>
+
+      <!-- Royal (Popular) -->
+      <div class="pricing-card popular fade-up delay-2" id="price-card-2" data-ocid="pricing.item.2">
+        <div class="plan-badge badge-popular">🔥 Best Value</div>
+        <h3 class="plan-name">Royal</h3>
+        <p class="plan-tagline">Best for growing local businesses</p>
+        <div class="plan-pricing">
+          <div class="plan-original">₹14,999</div>
+          <div class="plan-price"><span>₹</span>8,999</div>
+          <div class="plan-savings">💰 Save ₹6,000</div>
+        </div>
+        <ul class="plan-features">
+          <li class="plan-feature">8-page premium design</li>
+          <li class="plan-feature">Advanced mobile optimization</li>
+          <li class="plan-feature">Full on-page SEO setup</li>
+          <li class="plan-feature">Google Business Profile setup</li>
+          <li class="plan-feature">WhatsApp + Call button integration</li>
+          <li class="plan-feature">Photo gallery / portfolio section</li>
+          <li class="plan-feature">3 revision rounds</li>
+          <li class="plan-feature">Delivery in 2–5 days</li>
+        </ul>
+        <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!%20I'm%20interested%20in%20the%20Royal%20plan%20(%E2%82%B98%2C999)."
+           class="pricing-cta pricing-cta-primary"
+           target="_blank" rel="noopener noreferrer"
+           data-ocid="pricing.get_started_button.2"
+           aria-label="Get Royal plan on WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get Royal Plan
+        </a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card fade-up delay-3" id="price-card-3" data-ocid="pricing.item.3">
+        <div class="plan-badge badge-limited">⏰ Most Complete</div>
+        <h3 class="plan-name">Premium</h3>
+        <p class="plan-tagline">Full-stack digital presence package</p>
+        <div class="plan-pricing">
+          <div class="plan-original">₹19,999</div>
+          <div class="plan-price"><span>₹</span>12,999</div>
+          <div class="plan-savings">💰 Save ₹7,000</div>
+        </div>
+        <ul class="plan-features">
+          <li class="plan-feature">10+ page fully custom website</li>
+          <li class="plan-feature">Premium animations &amp; interactions</li>
+          <li class="plan-feature">Full SEO + Google Business Profile</li>
+          <li class="plan-feature">Advanced Google Maps ranking</li>
+          <li class="plan-feature">Blog/news section setup</li>
+          <li class="plan-feature">Enquiry form with email notifications</li>
+          <li class="plan-feature">Unlimited revisions</li>
+          <li class="plan-feature">Priority support &amp; 60-day aftercare</li>
+          <li class="plan-feature">Delivery in 2–7 days</li>
+        </ul>
+        <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!%20I'm%20interested%20in%20the%20Premium%20plan%20(%E2%82%B912%2C999)."
+           class="pricing-cta pricing-cta-outline"
+           target="_blank" rel="noopener noreferrer"
+           data-ocid="pricing.get_started_button.3"
+           aria-label="Get Premium plan on WhatsApp">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get Premium Plan
+        </a>
+      </div>
+    </div>
+
+    <div class="pricing-note fade-up">
+      <span>🔒 Secure payment</span>
+      <span class="pricing-note-sep">·</span>
+      <span>💬 Chat before you pay</span>
+      <span class="pricing-note-sep">·</span>
+      <span>🔁 Revisions included</span>
+      <span class="pricing-note-sep">·</span>
+      <span>📞 WhatsApp support always</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     10. FINAL CTA
+═══════════════════════════════════════ -->
+<section id="cta" class="section" aria-labelledby="cta-heading" data-ocid="cta.section">
+  <div class="cta-orb-1" aria-hidden="true"></div>
+  <div class="cta-orb-2" aria-hidden="true"></div>
+  <div class="container cta-content">
+    <div class="fade-up">
+      <div class="section-badge" style="margin: 0 auto 20px;">🚀 Ready to Grow?</div>
+      <h2 class="cta-title" id="cta-heading">
+        Ready to Get Your<br />
+        <span class="gradient-text">Business Online?</span>
+      </h2>
+      <p class="cta-sub">Go live in as little as 2 days. Join 50+ Indian businesses already growing with Siteset Studios.</p>
+    </div>
+
+    <div class="cta-btns fade-up delay-1">
+      <a href="https://wa.me/919330138050?text=Hi%20Siteset%20Studio!%20I'd%20like%20a%20free%20demo."
+         class="btn btn-primary"
+         target="_blank" rel="noopener noreferrer"
+         data-ocid="cta.get_demo_button">
+        🚀 Get Free Demo on WhatsApp
+      </a>
+      <a href="tel:+919330138050"
+         class="btn btn-outline"
+         data-ocid="cta.call_button">
+        📞 Call Now
+      </a>
+    </div>
+
+    <div class="cta-trust fade-up delay-2">
+      <div class="cta-trust-item"><div class="dot"></div> Live in 2–7 Days</div>
+      <div class="cta-trust-item"><div class="dot"></div> 100% Satisfaction</div>
+      <div class="cta-trust-item"><div class="dot"></div> No Hidden Fees</div>
+      <div class="cta-trust-item"><div class="dot"></div> 50+ Happy Clients</div>
+    </div>
+
+    <p class="cta-india fade-up delay-3">🇮🇳 Proudly serving businesses across all of India</p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     11. FOOTER
+═══════════════════════════════════════ -->
+<footer id="footer" aria-label="Site footer" data-ocid="footer.section">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-brand" aria-label="Siteset Studios home">
+          <img src="./assets/siteset-logo-user.png" alt="Siteset Studios" class="nav-logo" width="40" height="40" loading="lazy" />
+          <span class="nav-name">Siteset <span>Studios</span></span>
+        </a>
+        <p class="footer-tagline">Building digital presence for Indian businesses — fast, affordable, and results-driven.</p>
+        <div class="footer-social">
+          <a href="https://wa.me/919330138050" class="social-btn" target="_blank" rel="noopener" aria-label="WhatsApp" data-ocid="footer.whatsapp_link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+          <a href="mailto:sitesetstudios@gmail.com" class="social-btn" aria-label="Email us" data-ocid="footer.email_link">✉️</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact Us</div>
+        <div class="footer-contact-item">
+          <span class="icon">✉️</span>
+          <div>
+            <div class="footer-contact-label">Email</div>
+            <a href="mailto:sitesetstudios@gmail.com" data-ocid="footer.email_address">sitesetstudios@gmail.com</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">💬</span>
+          <div>
+            <div class="footer-contact-label">WhatsApp</div>
+            <a href="https://wa.me/919330138050" target="_blank" rel="noopener" data-ocid="footer.phone_link">+91 93301 38050</a>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <span class="icon">🇮🇳</span>
+          <div>
+            <div class="footer-contact-label">Service Area</div>
+            <span>All of India</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Quick Links</div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#hero" data-ocid="footer.nav_home">Home</a>
+          <a href="#stats" data-ocid="footer.nav_stats">Our Numbers</a>
+          <a href="#services" data-ocid="footer.nav_services">Services</a>
+          <a href="#our-work" data-ocid="footer.nav_work">How We Work</a>
+          <a href="#testimonials" data-ocid="footer.nav_reviews">Reviews</a>
+          <a href="#pricing" data-ocid="footer.nav_pricing">Pricing</a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">
+        © <span id="footer-year"></span> Siteset Studios. All rights reserved. Built with ❤️ for Indian businesses.
+      </p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="./script.js"></script>
+</body>
 </html>

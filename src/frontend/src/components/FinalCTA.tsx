@@ -12,10 +12,44 @@ import { motion } from "motion/react";
 const WHATSAPP_URL = "https://wa.me/919330138050?text=Hi%20Siteset%20Studio!";
 
 const trustItems = [
-  { icon: Clock, text: "Live in 48 Hours" },
+  { icon: Clock, text: "Live in 2–7 Days" },
   { icon: Shield, text: "100% Satisfaction" },
   { icon: IndianRupee, text: "No Hidden Fees" },
   { icon: Star, text: "50+ Happy Clients" },
+];
+
+// 3D floating shape for background
+const BG_SHAPES = [
+  {
+    id: "s1",
+    type: "orb",
+    size: 400,
+    x: "65%",
+    y: "10%",
+    color: "oklch(0.62 0.26 265 / 0.35)",
+    blur: 80,
+    cls: "float-3d-alt",
+  },
+  {
+    id: "s2",
+    type: "orb",
+    size: 280,
+    x: "-5%",
+    y: "40%",
+    color: "oklch(0.55 0.2 265 / 0.25)",
+    blur: 60,
+    cls: "float-3d",
+  },
+  {
+    id: "s3",
+    type: "orb",
+    size: 180,
+    x: "40%",
+    y: "70%",
+    color: "oklch(0.72 0.2 285 / 0.2)",
+    blur: 50,
+    cls: "floating-shape-slow",
+  },
 ];
 
 export default function FinalCTA() {
@@ -26,11 +60,29 @@ export default function FinalCTA() {
       style={{
         background:
           "linear-gradient(135deg, oklch(0.06 0.025 265) 0%, oklch(0.09 0.035 265) 40%, oklch(0.07 0.02 265) 100%)",
+        perspective: "1500px",
       }}
     >
-      {/* Animated glow orbs */}
+      {/* 3D Floating background shapes */}
       <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {/* Central large orb */}
+        {BG_SHAPES.map((s) => (
+          <div
+            key={s.id}
+            className={`absolute rounded-full ${s.cls}`}
+            style={{
+              width: s.size,
+              height: s.size,
+              left: s.x,
+              top: s.y,
+              background: `radial-gradient(circle at 35% 35%, ${s.color}, transparent 70%)`,
+              filter: `blur(${s.blur}px)`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Central large pulsing orb */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
         <motion.div
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] rounded-full blur-[80px]"
           style={{
@@ -42,30 +94,6 @@ export default function FinalCTA() {
             repeat: Number.POSITIVE_INFINITY,
             duration: 5,
             ease: "easeInOut",
-          }}
-        />
-        {/* Top-right orb */}
-        <motion.div
-          className="absolute top-0 right-0 w-72 h-72 rounded-full blur-[100px]"
-          style={{ background: "oklch(0.65 0.2 250 / 0.2)" }}
-          animate={{ scale: [1, 1.15, 1], opacity: [0.2, 0.35, 0.2] }}
-          transition={{
-            repeat: Number.POSITIVE_INFINITY,
-            duration: 7,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-        />
-        {/* Bottom-left orb */}
-        <motion.div
-          className="absolute bottom-0 left-10 w-56 h-56 rounded-full blur-[80px]"
-          style={{ background: "oklch(0.55 0.2 280 / 0.18)" }}
-          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.3, 0.15] }}
-          transition={{
-            repeat: Number.POSITIVE_INFINITY,
-            duration: 6,
-            ease: "easeInOut",
-            delay: 2,
           }}
         />
         {/* Grid overlay */}
@@ -90,7 +118,7 @@ export default function FinalCTA() {
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-ping" />
           <span className="text-primary text-sm font-bold tracking-wide">
-            Your Website Live in 48 Hours
+            Your Website Live in 2–7 Days
           </span>
         </motion.div>
 
@@ -112,7 +140,7 @@ export default function FinalCTA() {
               backgroundClip: "text",
             }}
           >
-            Online in 48 Hours
+            Online Today
           </span>
         </motion.h2>
 
@@ -125,10 +153,10 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           Start getting more customers today. No technical knowledge needed — we
-          build it, you grow. Starting at just ₹8,999.
+          build it, you grow. Starting at just ₹3,999.
         </motion.p>
 
-        {/* CTA Buttons */}
+        {/* CTA Buttons with pulsing glow */}
         <motion.div
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           initial={{ opacity: 0, y: 20 }}
@@ -136,16 +164,32 @@ export default function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <Button
-            type="button"
-            data-ocid="cta.get_free_demo_button"
-            size="lg"
-            className="gradient-primary text-primary-foreground glow-btn border-0 font-bold text-base px-8 py-6 rounded-xl hover:opacity-90 transition-smooth group min-w-[200px]"
-            onClick={() => window.open(WHATSAPP_URL, "_blank")}
+          <motion.div
+            animate={{
+              boxShadow: [
+                "0 0 20px oklch(0.62 0.26 265 / 0.4)",
+                "0 0 50px oklch(0.62 0.26 265 / 0.7)",
+                "0 0 20px oklch(0.62 0.26 265 / 0.4)",
+              ],
+            }}
+            transition={{
+              repeat: Number.POSITIVE_INFINITY,
+              duration: 2.5,
+              ease: "easeInOut",
+            }}
+            className="rounded-xl"
           >
-            <Rocket className="w-5 h-5 mr-2 group-hover:translate-x-0.5 transition-transform" />
-            Get Free Demo
-          </Button>
+            <Button
+              type="button"
+              data-ocid="cta.get_free_demo_button"
+              size="lg"
+              className="gradient-primary text-primary-foreground glow-btn border-0 font-bold text-base px-8 py-6 rounded-xl hover:opacity-90 transition-smooth group min-w-[200px]"
+              onClick={() => window.open(WHATSAPP_URL, "_blank")}
+            >
+              <Rocket className="w-5 h-5 mr-2 group-hover:translate-x-0.5 transition-transform" />
+              Get Free Demo
+            </Button>
+          </motion.div>
 
           <Button
             type="button"
@@ -169,15 +213,21 @@ export default function FinalCTA() {
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           {trustItems.map(({ icon: Icon, text }) => (
-            <div
+            <motion.div
               key={text}
-              className="flex items-center gap-2 bg-white/[0.04] border border-white/[0.07] rounded-full px-4 py-2"
+              className="flex items-center gap-2 rounded-full px-4 py-2"
+              whileHover={{ scale: 1.05, y: -2 }}
+              style={{
+                background: "oklch(0.12 0.03 265 / 0.6)",
+                border: "1px solid oklch(0.62 0.26 265 / 0.15)",
+                backdropFilter: "blur(12px)",
+              }}
             >
               <Icon className="w-4 h-4 text-primary" />
               <span className="text-muted-foreground text-sm font-medium">
                 {text}
               </span>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 

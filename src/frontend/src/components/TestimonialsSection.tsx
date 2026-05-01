@@ -2,7 +2,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import type { Testimonial } from "@/types/index";
 import { Quote, Star, TrendingUp, Users } from "lucide-react";
 import { motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 
 interface IndianTestimonial extends Testimonial {
   city: string;
@@ -91,7 +91,6 @@ const testimonials: IndianTestimonial[] = [
   },
 ];
 
-// Row 1: indices 0,1,2 flow left→right. Row 2: indices 3,4,5 flow right→left.
 const row1 = testimonials.slice(0, 3);
 const row2 = testimonials.slice(3, 6);
 
@@ -124,26 +123,45 @@ function StarRating({ count }: { count: number }) {
 function TestimonialCard({
   t,
   index,
-}: {
-  t: IndianTestimonial;
-  index: number;
-}) {
+}: { t: IndianTestimonial; index: number }) {
   const gradClass = avatarGradients[index % avatarGradients.length];
 
   return (
-    <div
+    <motion.div
       data-ocid={`testimonials.item.${index + 1}`}
-      className="group relative flex-shrink-0 w-72 flex flex-col p-5 rounded-2xl glass border border-white/[0.07] hover:border-primary/30 transition-smooth shadow-subtle hover:shadow-elevated overflow-hidden"
+      className="group relative flex-shrink-0 w-72 flex flex-col p-5 rounded-2xl glass border border-white/[0.07] hover:border-primary/30 transition-smooth shadow-subtle hover:shadow-elevated overflow-hidden cursor-default"
+      whileHover={{
+        y: -6,
+        rotateY: 4,
+        scale: 1.02,
+        transition: { duration: 0.25 },
+      }}
+      style={{ transformPerspective: 800 }}
     >
       {/* Hover glow */}
       <div
         className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 0%, oklch(0.6 0.23 265 / 0.1) 0%, transparent 70%)",
+            "radial-gradient(ellipse at 50% 0%, oklch(0.6 0.23 265 / 0.12) 0%, transparent 70%)",
         }}
       />
+      {/* Animated bottom border */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out" />
+
+      {/* Sparkle decorations */}
+      <div
+        className="absolute top-3 right-3 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        aria-hidden="true"
+      >
+        <motion.span
+          animate={{ rotate: [0, 360], scale: [1, 1.3, 1] }}
+          transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+          className="text-amber-400/60 text-xs"
+        >
+          ✦
+        </motion.span>
+      </div>
 
       {/* Top row */}
       <div className="flex items-center justify-between mb-3 relative z-10">
@@ -186,7 +204,7 @@ function TestimonialCard({
           Verified
         </span>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -199,16 +217,9 @@ function MarqueeRow({
   direction: "left" | "right";
   startIndex: number;
 }) {
-  // Duplicate cards for seamless loop
   const doubled = [...cards, ...cards];
   const rowRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    const el = rowRef.current;
-    if (!el) return;
-    // Pure CSS animation driven by a keyframe set in inline style
-  }, []);
 
   const animName = direction === "left" ? "marqueeLeft" : "marqueeRight";
   const duration = `${cards.length * 14}s`;
@@ -230,7 +241,6 @@ function MarqueeRow({
       >
         {doubled.map((t, i) => (
           <TestimonialCard
-            // biome-ignore lint/suspicious/noArrayIndexKey: marquee duplicate
             key={`${t.id}-${i}`}
             t={t}
             index={(startIndex + (i % cards.length)) % avatarGradients.length}
@@ -252,7 +262,6 @@ export default function TestimonialsSection() {
       ref={ref}
       className="section-dark py-20 lg:py-24 relative overflow-hidden"
     >
-      {/* Keyframe styles injected inline */}
       <style>{`
         @keyframes marqueeLeft {
           0% { transform: translateX(0); }
@@ -264,7 +273,7 @@ export default function TestimonialsSection() {
         }
       `}</style>
 
-      {/* Background decorations */}
+      {/* Background decorations + sparkle stars */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] opacity-[0.05] pointer-events-none"
         style={{
@@ -272,6 +281,33 @@ export default function TestimonialsSection() {
             "radial-gradient(ellipse at center, oklch(0.6 0.23 265) 0%, transparent 60%)",
         }}
       />
+
+      {/* Floating sparkles */}
+      <div
+        className="absolute inset-0 pointer-events-none overflow-hidden"
+        aria-hidden="true"
+      >
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            // biome-ignore lint/suspicious/noArrayIndexKey: decorative static
+            key={i}
+            className="absolute text-amber-400/20 text-sm select-none"
+            style={{ left: `${10 + i * 15}%`, top: `${15 + (i % 3) * 25}%` }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.1, 0.3, 0.1],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 4 + i,
+              repeat: Number.POSITIVE_INFINITY,
+              delay: i * 0.7,
+            }}
+          >
+            ✦
+          </motion.div>
+        ))}
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
@@ -309,9 +345,11 @@ export default function TestimonialsSection() {
           {socialProofStats.map((stat) => {
             const Icon = stat.icon;
             return (
-              <div
+              <motion.div
                 key={stat.label}
-                className="text-center py-3 px-2 rounded-xl glass border border-white/[0.06]"
+                className="text-center py-3 px-2 rounded-xl glass border border-white/[0.06] cursor-default"
+                whileHover={{ scale: 1.05, y: -3 }}
+                style={{ transformPerspective: 600 }}
               >
                 <Icon className="w-3.5 h-3.5 text-primary mx-auto mb-1 opacity-70" />
                 <div className="font-display font-extrabold text-xl text-primary">
@@ -320,7 +358,7 @@ export default function TestimonialsSection() {
                 <div className="text-muted-foreground text-[10px] mt-0.5">
                   {stat.label}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </motion.div>

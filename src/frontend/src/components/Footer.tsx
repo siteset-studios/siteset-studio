@@ -1,6 +1,8 @@
 import { Mail, Phone } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 
+const footerLogoSrc = `${import.meta.env.BASE_URL}assets/generated/siteset-studio-logo-transparent.dim_200x200.png`;
+
 export default function Footer() {
   const year = new Date().getFullYear();
   const caffeineUrl = `https://caffeine.ai?utm_source=caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(
@@ -39,7 +41,6 @@ export default function Footer() {
       />
 
       <div className="container mx-auto px-6 py-12">
-        {/* 3-column layout on desktop, stacked on mobile */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 items-center">
           {/* LEFT — Logo + tagline */}
           <div className="flex flex-col items-center md:items-start gap-3">
@@ -50,9 +51,12 @@ export default function Footer() {
               aria-label="Siteset Studios — scroll to top"
             >
               <img
-                src="/assets/generated/siteset-studio-logo-transparent.dim_200x200.png"
+                src={footerLogoSrc}
                 alt="Siteset Studios logo"
                 className="h-10 w-10 object-contain group-hover:scale-105 transition-transform duration-200"
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).style.display = "none";
+                }}
               />
               <span className="font-display text-lg font-bold text-foreground tracking-tight">
                 Siteset Studios

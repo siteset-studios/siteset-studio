@@ -1014,16 +1014,16 @@ export default function BeforeAfterSlider() {
 
         {/* Slider container */}
         <motion.div
-          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          initial={{ opacity: 0, y: 40, scale: 0.97, rotateX: 8 }}
           animate={
             isVisible
-              ? { opacity: 1, y: 0, scale: 1 }
-              : { opacity: 0, y: 40, scale: 0.97 }
+              ? { opacity: 1, y: 0, scale: 1, rotateX: 0 }
+              : { opacity: 0, y: 40, scale: 0.97, rotateX: 8 }
           }
           transition={{ duration: 0.75, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto max-w-3xl"
           data-ocid="before_after.slider"
-          style={{ perspective: "1200px" }}
+          style={{ perspective: "1400px", transformStyle: "preserve-3d" }}
         >
           {/* 3D perspective frame */}
           <div
@@ -1074,17 +1074,17 @@ export default function BeforeAfterSlider() {
                 </div>
               </div>
 
-              {/* Divider line with dual glow (red on left, gold on right) */}
+              {/* Divider line with dual glow + enhanced glow at center */}
               <div
                 className="absolute top-0 bottom-0 pointer-events-none"
                 style={{
                   left: `${sliderPos}%`,
                   transform: "translateX(-50%)",
-                  width: "2px",
+                  width: "3px",
                   background:
-                    "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 10%, rgba(255,255,255,0.9) 90%, transparent 100%)",
+                    "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.95) 10%, rgba(255,255,255,0.95) 90%, transparent 100%)",
                   boxShadow:
-                    "0 0 14px 3px rgba(255,255,255,0.35), -4px 0 12px rgba(239,68,68,0.2), 4px 0 12px rgba(212,168,23,0.2)",
+                    "0 0 20px 4px rgba(255,255,255,0.5), -6px 0 18px rgba(239,68,68,0.25), 6px 0 18px rgba(212,168,23,0.25)",
                 }}
               />
 

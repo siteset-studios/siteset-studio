@@ -249,6 +249,40 @@
     animation-delay: -1.5s;
   }
 
+  /* ── 3D Float with rotation ── */
+  .float-3d {
+    animation: float3d 7s ease-in-out infinite;
+  }
+  .float-3d-alt {
+    animation: float3d 9s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+  .float-3d-fast {
+    animation: float3d 5s ease-in-out infinite;
+    animation-delay: -1.5s;
+  }
+
+  /* ── Depth shadow utility for 3D depth ── */
+  .depth-shadow {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 8px rgba(0, 0, 0, 0.15), 0
+      12px 24px rgba(0, 0, 0, 0.2), 0 24px 48px rgba(0, 0, 0, 0.25);
+  }
+
+  /* ── Glow pulse cycling colors ── */
+  .glow-pulse {
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+
+  /* ── Card 3D base class ── */
+  .card-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s
+      ease;
+  }
+  .card-3d:hover {
+    transform: translateY(-6px) rotateX(4deg);
+  }
+
   .cursor-glow {
     pointer-events: none;
     position: fixed;
@@ -261,7 +295,7 @@
 
   /* Parallax 3D depth transforms */
   .parallax-depth {
-    perspective: 1200px;
+    perspective: 1800px;
     transform-style: preserve-3d;
   }
 
@@ -352,7 +386,7 @@
 
   /* ── 3D card tilt perspective ── */
   .perspective-card {
-    perspective: 900px;
+    perspective: 1000px;
   }
   .tilt-inner {
     transform-style: preserve-3d;
@@ -431,6 +465,40 @@
     }
   }
 
+  /* ── 3D Float with rotateX/Y/Z ── */
+  @keyframes float3d {
+    0%,
+    100% {
+      transform: translateY(0) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+    25% {
+      transform: translateY(-16px) rotateX(6deg) rotateY(8deg) rotateZ(2deg);
+    }
+    50% {
+      transform: translateY(-10px) rotateX(-4deg) rotateY(-6deg) rotateZ(-1deg);
+    }
+    75% {
+      transform: translateY(-20px) rotateX(8deg) rotateY(4deg) rotateZ(3deg);
+    }
+  }
+
+  /* ── Glow pulse cycling through colors ── */
+  @keyframes glowPulse {
+    0%,
+    100% {
+      box-shadow: 0 0 20px oklch(0.62 0.26 265 / 0.4), 0 0 40px
+        oklch(0.62 0.26 265 / 0.2);
+    }
+    33% {
+      box-shadow: 0 0 20px oklch(0.72 0.2 285 / 0.4), 0 0 40px
+        oklch(0.72 0.2 285 / 0.2);
+    }
+    66% {
+      box-shadow: 0 0 20px oklch(0.75 0.18 145 / 0.4), 0 0 40px
+        oklch(0.75 0.18 145 / 0.2);
+    }
+  }
+
   /* ── Underline reveal (used in footer links) ── */
   .underline-reveal {
     position: relative;
@@ -469,7 +537,10 @@
 @media (prefers-reduced-motion: reduce) {
   .floating-shape,
   .floating-shape-slow,
-  .floating-shape-fast {
+  .floating-shape-fast,
+  .float-3d,
+  .float-3d-alt,
+  .float-3d-fast {
     animation: none;
   }
   * {

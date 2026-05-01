@@ -1,8 +1,8 @@
 import {
-  CheckCircle2,
+  CheckCircle,
+  Layers,
   MapPin,
   MessageCircle,
-  Palette,
   RefreshCw,
   Rocket,
   Star,
@@ -11,7 +11,8 @@ import {
   Users,
   Zap,
 } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useMotionValue, useSpring, useTransform } from "motion/react";
+import { type MouseEvent, useEffect, useRef, useState } from "react";
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 
@@ -19,38 +20,62 @@ const STEPS = [
   {
     number: "01",
     icon: MessageCircle,
-    title: "You Share Your Vision",
+    title: "Aap Batao",
+    subtitle: "You Tell Us",
     description:
-      "Tell us about your business, goals, and what you need. Quick 15-min call or WhatsApp.",
+      "Apna business aur goals share karo — free consultation mein, koi charge nahi.",
     color: "oklch(0.62 0.26 265)",
-    glow: "oklch(0.62 0.26 265 / 0.35)",
+    glow: "oklch(0.62 0.26 265 / 0.5)",
+    gradFrom: "oklch(0.62 0.26 265 / 0.18)",
+    gradTo: "oklch(0.62 0.26 265 / 0.04)",
+    border: "oklch(0.62 0.26 265 / 0.35)",
+    hue: "265",
+    delay: 0,
   },
   {
     number: "02",
-    icon: Palette,
-    title: "We Design & Build",
+    icon: Layers,
+    title: "Design & Build",
+    subtitle: "Premium Creation",
     description:
-      "Our team creates your custom website with premium animations and mobile-first design.",
-    color: "oklch(0.72 0.2 30)",
-    glow: "oklch(0.72 0.2 30 / 0.35)",
+      "2–7 din mein premium website design + development — mobile-first, fast, beautiful.",
+    color: "oklch(0.72 0.2 285)",
+    glow: "oklch(0.72 0.2 285 / 0.5)",
+    gradFrom: "oklch(0.72 0.2 285 / 0.18)",
+    gradTo: "oklch(0.72 0.2 285 / 0.04)",
+    border: "oklch(0.72 0.2 285 / 0.35)",
+    hue: "285",
+    delay: 0.12,
   },
   {
     number: "03",
-    icon: CheckCircle2,
-    title: "You Review & Approve",
+    icon: CheckCircle,
+    title: "Review & Approve",
+    subtitle: "Your Feedback",
     description:
-      "Preview your site, request any changes. Unlimited revisions until you love it.",
-    color: "oklch(0.78 0.14 142)",
-    glow: "oklch(0.78 0.14 142 / 0.35)",
+      "Aap dekho, feedback do — unlimited revisions jab tak aap 100% khush na ho.",
+    color: "oklch(0.72 0.18 195)",
+    glow: "oklch(0.72 0.18 195 / 0.5)",
+    gradFrom: "oklch(0.72 0.18 195 / 0.18)",
+    gradTo: "oklch(0.72 0.18 195 / 0.04)",
+    border: "oklch(0.72 0.18 195 / 0.35)",
+    hue: "195",
+    delay: 0.24,
   },
   {
     number: "04",
     icon: Rocket,
-    title: "Go Live!",
+    title: "Go Live! 🚀",
+    subtitle: "Launch Day",
     description:
-      "We deploy your website and hand over full access. You're live within 2–7 days.",
-    color: "oklch(0.68 0.16 192)",
-    glow: "oklch(0.68 0.16 192 / 0.35)",
+      "Website launch + Google pe setup — aap ready to get customers from day one!",
+    color: "oklch(0.75 0.18 145)",
+    glow: "oklch(0.75 0.18 145 / 0.5)",
+    gradFrom: "oklch(0.75 0.18 145 / 0.18)",
+    gradTo: "oklch(0.75 0.18 145 / 0.04)",
+    border: "oklch(0.75 0.18 145 / 0.35)",
+    hue: "145",
+    delay: 0.36,
   },
 ];
 
@@ -121,95 +146,163 @@ const RESULTS = [
   },
 ];
 
-// ─── Sub-components ───────────────────────────────────────────────────────────
+// ─── 3D Tilt Step Card ─────────────────────────────────────────────────────────
 
-function StepCard({
+function StepCard3D({
   step,
   index,
-  isLast,
 }: {
   step: (typeof STEPS)[number];
   index: number;
-  isLast: boolean;
 }) {
   const Icon = step.icon;
+  const cardRef = useRef<HTMLDivElement>(null);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useTransform(mouseY, [-80, 80], [8, -8]);
+  const rotateY = useTransform(mouseX, [-80, 80], [-8, 8]);
+  const springRotX = useSpring(rotateX, { stiffness: 200, damping: 20 });
+  const springRotY = useSpring(rotateY, { stiffness: 200, damping: 20 });
 
-  return (
-    <div className="relative flex flex-col items-center">
-      {/* Connector line (desktop only, between steps) */}
-      {!isLast && (
-        <div
-          className="hidden lg:block absolute top-10 left-[calc(50%+2.5rem)] right-0 h-px z-0"
-          style={{
-            background: `linear-gradient(90deg, ${step.color}, transparent)`,
-            opacity: 0.35,
-          }}
-        />
-      )}
-
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{
-          duration: 0.6,
-          delay: index * 0.15,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-        className="relative flex flex-col items-center text-center px-4 z-10"
-      >
-        {/* Number + Icon circle */}
-        <div className="relative mb-5">
-          {/* Glow ring */}
-          <div
-            className="absolute inset-0 rounded-full blur-xl opacity-60"
-            style={{ background: step.glow }}
-          />
-          <div
-            className="relative w-20 h-20 rounded-full flex items-center justify-center border"
-            style={{
-              background: `linear-gradient(135deg, ${step.color}22, ${step.color}08)`,
-              borderColor: `${step.color}50`,
-              boxShadow: `0 0 30px ${step.glow}`,
-            }}
-          >
-            <Icon className="w-8 h-8" style={{ color: step.color }} />
-          </div>
-          {/* Step number badge */}
-          <div
-            className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black text-white"
-            style={{
-              background: `linear-gradient(135deg, ${step.color}, ${step.color}cc)`,
-              boxShadow: `0 2px 8px ${step.glow}`,
-            }}
-          >
-            {index + 1}
-          </div>
-        </div>
-
-        <h3 className="font-display font-extrabold text-base lg:text-lg text-foreground mb-2 leading-tight">
-          {step.title}
-        </h3>
-        <p className="text-muted-foreground text-sm leading-relaxed max-w-[180px]">
-          {step.description}
-        </p>
-      </motion.div>
-    </div>
-  );
-}
-
-function TrustBadge({
-  badge,
-  index,
-}: {
-  badge: (typeof TRUST_BADGES)[number];
-  index: number;
-}) {
-  const Icon = badge.icon;
+  function handleMouseMove(e: MouseEvent<HTMLDivElement>) {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - rect.left - rect.width / 2);
+    mouseY.set(e.clientY - rect.top - rect.height / 2);
+  }
+  function handleMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.88, y: 24 }}
+      ref={cardRef}
+      initial={{ opacity: 0, y: 60, rotateX: 20 }}
+      whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+      viewport={{ once: true }}
+      transition={{
+        duration: 0.7,
+        delay: step.delay,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      style={{ transformPerspective: 1000 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      data-ocid={`our-work.step.${index + 1}`}
+      className="relative group cursor-default"
+    >
+      <motion.div
+        style={{
+          rotateX: springRotX,
+          rotateY: springRotY,
+          transformStyle: "preserve-3d",
+        }}
+        className="relative rounded-3xl p-7 overflow-hidden h-full"
+        whileHover={{ scale: 1.03 }}
+        transition={{ type: "spring", stiffness: 260, damping: 22 }}
+      >
+        {/* Card glass background */}
+        <div
+          className="absolute inset-0 rounded-3xl"
+          style={{
+            background: `linear-gradient(135deg, ${step.gradFrom} 0%, ${step.gradTo} 100%)`,
+            border: `1px solid ${step.border}`,
+            backdropFilter: "blur(20px)",
+          }}
+        />
+
+        {/* Animated glow halo behind card */}
+        <motion.div
+          className="absolute -inset-2 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100"
+          style={{
+            background: `radial-gradient(ellipse at 50% 50%, ${step.glow}, transparent 70%)`,
+            filter: "blur(20px)",
+            zIndex: -1,
+          }}
+          transition={{ duration: 0.3 }}
+        />
+
+        {/* Step number large background text */}
+        <div
+          className="absolute top-3 right-5 font-display font-black select-none pointer-events-none"
+          style={{
+            fontSize: "5rem",
+            lineHeight: 1,
+            color: `oklch(0.62 0.22 ${step.hue} / 0.08)`,
+          }}
+          aria-hidden="true"
+        >
+          {step.number}
+        </div>
+
+        {/* Content (preserve-3d translateZ so it floats above bg) */}
+        <div
+          className="relative z-10"
+          style={{ transform: "translateZ(20px)" }}
+        >
+          {/* Step badge */}
+          <div className="flex items-center gap-3 mb-5">
+            <div
+              className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+              style={{
+                background: `linear-gradient(135deg, ${step.gradFrom}, ${step.gradTo})`,
+                border: `1.5px solid ${step.border}`,
+                boxShadow: `0 0 24px ${step.glow}`,
+              }}
+            >
+              <Icon
+                className="w-6 h-6"
+                style={{ color: step.color }}
+                strokeWidth={1.8}
+              />
+            </div>
+
+            {/* Glowing step number pill */}
+            <span
+              className="font-display font-black text-2xl bg-clip-text text-transparent"
+              style={{
+                backgroundImage: `linear-gradient(135deg, ${step.color}, ${step.color}bb)`,
+              }}
+            >
+              {step.number}
+            </span>
+          </div>
+
+          <h3 className="font-display font-extrabold text-xl text-foreground mb-1 leading-tight">
+            {step.title}
+          </h3>
+          <p
+            className="text-xs font-semibold tracking-widest uppercase mb-3"
+            style={{ color: step.color }}
+          >
+            {step.subtitle}
+          </p>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {step.description}
+          </p>
+        </div>
+
+        {/* Pulsing border glow on hover */}
+        <div
+          className="absolute inset-0 rounded-3xl pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{ boxShadow: `inset 0 0 30px ${step.glow}` }}
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
+// ─── Trust Badge 3D ───────────────────────────────────────────────────────────
+
+function TrustBadge3D({
+  badge,
+  index,
+}: { badge: (typeof TRUST_BADGES)[number]; index: number }) {
+  const Icon = badge.icon;
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8, y: 30 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
@@ -217,25 +310,30 @@ function TrustBadge({
         delay: index * 0.1,
         ease: [0.34, 1.56, 0.64, 1],
       }}
-      whileHover={{ y: -5, transition: { duration: 0.25 } }}
-      data-ocid={`our-work.trust_badge.${index + 1}`}
-      className="relative glass rounded-2xl p-5 flex flex-col items-center text-center group overflow-hidden"
-      style={{
-        border: `1px solid ${badge.color}25`,
-        boxShadow: "0 8px 32px rgba(0,0,0,0.35)",
+      whileHover={{
+        y: -8,
+        rotateY: 8,
+        scale: 1.04,
+        transition: { duration: 0.25 },
       }}
+      style={{ transformPerspective: 800, transformStyle: "preserve-3d" }}
+      data-ocid={`our-work.trust_badge.${index + 1}`}
+      className="relative glass rounded-2xl p-5 flex flex-col items-center text-center group overflow-hidden cursor-default"
     >
-      {/* Hover glow */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"
         style={{
-          background: `radial-gradient(ellipse at 50% 0%, ${badge.color}12, transparent 70%)`,
+          background: `radial-gradient(ellipse at 50% 0%, ${badge.color}20, transparent 70%)`,
         }}
       />
-
-      {/* Icon */}
+      {/* 3D depth shadow effect */}
       <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-3"
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{ boxShadow: `0 20px 40px -10px ${badge.color}30` }}
+      />
+
+      <div
+        className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform duration-300 group-hover:scale-110"
         style={{
           background: `${badge.color}18`,
           border: `1px solid ${badge.color}35`,
@@ -245,7 +343,6 @@ function TrustBadge({
         <Icon className="w-5 h-5" style={{ color: badge.color }} />
       </div>
 
-      {/* Metric */}
       <div
         className="font-display font-black text-3xl leading-none mb-1"
         style={{ color: badge.color }}
@@ -262,18 +359,16 @@ function TrustBadge({
   );
 }
 
+// ─── Result Card ──────────────────────────────────────────────────────────────
+
 function ResultCard({
   result,
   index,
-}: {
-  result: (typeof RESULTS)[number];
-  index: number;
-}) {
+}: { result: (typeof RESULTS)[number]; index: number }) {
   const Icon = result.icon;
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 36 }}
+      initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{
@@ -281,22 +376,25 @@ function ResultCard({
         delay: index * 0.12,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{ y: -6, transition: { duration: 0.3 } }}
+      whileHover={{ y: -8, scale: 1.02, transition: { duration: 0.3 } }}
+      style={{ transformPerspective: 900 }}
       data-ocid={`our-work.result_card.${index + 1}`}
       className="relative rounded-2xl p-6 flex flex-col group overflow-hidden"
-      style={{
-        background: "oklch(0.1 0.02 265)",
-        border: `1px solid ${result.borderColor}`,
-        boxShadow: `0 0 40px ${result.glow}, 0 12px 40px rgba(0,0,0,0.4)`,
-      }}
     >
-      {/* Gradient top edge */}
+      {/* BG + border */}
+      <div
+        className="absolute inset-0 rounded-2xl"
+        style={{
+          background: "oklch(0.1 0.02 265)",
+          border: `1px solid ${result.borderColor}`,
+          boxShadow: `0 0 40px ${result.glow}, 0 12px 40px rgba(0,0,0,0.4)`,
+        }}
+      />
+
       <div
         className="absolute inset-x-0 top-0 h-0.5 rounded-t-2xl"
         style={{ background: result.gradient }}
       />
-
-      {/* Background glow on hover */}
       <div
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl"
         style={{
@@ -304,30 +402,29 @@ function ResultCard({
         }}
       />
 
-      {/* Icon */}
-      <div
-        className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 relative"
-        style={{
-          background: result.gradient,
-          boxShadow: `0 4px 20px ${result.borderColor}`,
-        }}
-      >
-        <Icon className="w-7 h-7 text-white" />
+      <div className="relative z-10 flex flex-col h-full">
+        <div
+          className="w-14 h-14 rounded-2xl flex items-center justify-center mb-4 flex-shrink-0"
+          style={{
+            background: result.gradient,
+            boxShadow: `0 4px 20px ${result.borderColor}`,
+          }}
+        >
+          <Icon className="w-7 h-7 text-white" />
+        </div>
+        <div
+          className="font-display font-black text-4xl lg:text-5xl leading-none mb-1 bg-clip-text text-transparent"
+          style={{ backgroundImage: result.gradient }}
+        >
+          {result.metric}
+        </div>
+        <h3 className="font-display font-extrabold text-lg text-foreground mb-2">
+          {result.headline}
+        </h3>
+        <p className="text-muted-foreground text-sm leading-relaxed flex-1">
+          {result.description}
+        </p>
       </div>
-
-      {/* Metric */}
-      <div
-        className="font-display font-black text-4xl lg:text-5xl leading-none mb-1 bg-clip-text text-transparent"
-        style={{ backgroundImage: result.gradient }}
-      >
-        {result.metric}
-      </div>
-      <h3 className="font-display font-extrabold text-lg text-foreground mb-2">
-        {result.headline}
-      </h3>
-      <p className="text-muted-foreground text-sm leading-relaxed flex-1">
-        {result.description}
-      </p>
     </motion.div>
   );
 }
@@ -338,36 +435,58 @@ export default function PortfolioSection() {
   return (
     <section
       id="portfolio"
-      className="section-card py-20 lg:py-28 relative overflow-hidden"
+      className="relative py-20 lg:py-28 overflow-hidden"
       data-ocid="our-work.section"
+      style={{
+        background:
+          "linear-gradient(180deg, oklch(0.09 0.025 265) 0%, oklch(0.07 0.015 265) 100%)",
+        perspective: "1500px",
+      }}
     >
-      {/* Background decorations */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-[0.04] pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, oklch(0.62 0.26 265) 0%, transparent 65%)",
-        }}
-      />
-      <div
-        className="absolute bottom-1/3 right-0 w-60 h-60 opacity-[0.05] pointer-events-none rounded-full blur-3xl"
-        style={{ background: "oklch(0.72 0.2 30)" }}
-      />
-      <div
-        className="absolute top-1/2 -left-20 w-48 h-48 opacity-[0.04] pointer-events-none rounded-full blur-3xl"
-        style={{ background: "oklch(0.78 0.14 142)" }}
-      />
+      {/* Deep background glow blobs */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px]"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, oklch(0.62 0.26 265 / 0.05) 0%, transparent 65%)",
+            filter: "blur(40px)",
+          }}
+        />
+        <div
+          className="absolute bottom-1/3 right-0 w-72 h-72 rounded-full"
+          style={{
+            background: "oklch(0.72 0.2 285 / 0.05)",
+            filter: "blur(60px)",
+          }}
+        />
+        <div
+          className="absolute top-1/2 -left-20 w-56 h-56 rounded-full"
+          style={{
+            background: "oklch(0.75 0.18 145 / 0.04)",
+            filter: "blur(60px)",
+          }}
+        />
+        {/* Subtle 3D grid */}
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage:
+              "linear-gradient(oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px), linear-gradient(90deg, oklch(0.62 0.22 265 / 0.8) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+      </div>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* ─── PART 1: How We Work ─── */}
-        <div className="mb-20">
-          {/* Section header */}
+        {/* ─── PART 1: How We Work — Cinematic 3D Cards ─── */}
+        <div className="mb-24">
           <motion.div
             initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="text-center mb-14"
+            className="text-center mb-16"
           >
             <span
               className="inline-block px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase mb-4 border"
@@ -380,33 +499,62 @@ export default function PortfolioSection() {
               Our Process
             </span>
             <h2 className="font-display font-extrabold text-3xl lg:text-5xl text-foreground mb-4 leading-tight">
-              From Idea to{" "}
+              Idea se{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "var(--gradient-primary)" }}
               >
                 Live Website
               </span>{" "}
-              in Days
+              tak — Sirf Days Mein
             </h2>
             <p className="text-muted-foreground text-base lg:text-lg max-w-xl mx-auto leading-relaxed">
-              A clear, smooth process — so you always know what's happening
-              next.
+              Ek clear, smooth process — aap hamesha jaante ho aage kya hoga.
             </p>
           </motion.div>
 
-          {/* Steps grid */}
+          {/* Steps: 4 column grid, each card 3D tilt */}
           <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
             data-ocid="our-work.process.list"
           >
             {STEPS.map((step, index) => (
-              <StepCard
-                key={step.number}
-                step={step}
-                index={index}
-                isLast={index === STEPS.length - 1}
-              />
+              <StepCard3D key={step.number} step={step} index={index} />
+            ))}
+          </div>
+
+          {/* Connecting flow line (desktop) */}
+          <div
+            className="hidden lg:flex items-center justify-between max-w-5xl mx-auto mt-6 px-12"
+            aria-hidden="true"
+          >
+            {STEPS.slice(0, -1).map((step, i) => (
+              <div key={step.number} className="flex-1 flex items-center gap-1">
+                <motion.div
+                  className="flex-1 h-px"
+                  style={{
+                    background: `linear-gradient(90deg, ${step.color}50, ${STEPS[i + 1].color}50)`,
+                  }}
+                  initial={{ scaleX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.5 + i * 0.15 }}
+                />
+                {/* Flowing dot */}
+                <motion.div
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{
+                    background: step.color,
+                    boxShadow: `0 0 8px ${step.glow}`,
+                  }}
+                  animate={{ opacity: [0, 1, 0], scale: [0.5, 1.2, 0.5] }}
+                  transition={{
+                    duration: 2,
+                    repeat: Number.POSITIVE_INFINITY,
+                    delay: i * 0.5,
+                  }}
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -417,7 +565,7 @@ export default function PortfolioSection() {
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-4 mb-20"
+          className="flex items-center gap-4 mb-24"
         >
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           <div
@@ -427,22 +575,22 @@ export default function PortfolioSection() {
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         </motion.div>
 
-        {/* ─── PART 2: Trust Badges ─── */}
-        <div className="mb-20">
+        {/* ─── PART 2: Trust Badges 3D ─── */}
+        <div className="mb-24">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.65 }}
-            className="text-center mb-10"
+            className="text-center mb-12"
           >
             <h2 className="font-display font-extrabold text-2xl lg:text-4xl text-foreground mb-2 leading-tight">
-              Why Businesses{" "}
+              Businesses Kyun{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{ backgroundImage: "var(--gradient-primary)" }}
               >
-                Trust Us
+                Trust Karte Hain
               </span>
             </h2>
             <p className="text-muted-foreground text-sm lg:text-base max-w-md mx-auto">
@@ -455,7 +603,7 @@ export default function PortfolioSection() {
             data-ocid="our-work.trust_badges.list"
           >
             {TRUST_BADGES.map((badge, index) => (
-              <TrustBadge key={badge.label} badge={badge} index={index} />
+              <TrustBadge3D key={badge.label} badge={badge} index={index} />
             ))}
           </div>
         </div>
@@ -466,7 +614,7 @@ export default function PortfolioSection() {
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-4 mb-20"
+          className="flex items-center gap-4 mb-24"
         >
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           <div
@@ -476,7 +624,7 @@ export default function PortfolioSection() {
           <div className="flex-1 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
         </motion.div>
 
-        {/* ─── PART 3: Results Focus ─── */}
+        {/* ─── PART 3: Real Results ─── */}
         <div className="mb-14">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -496,7 +644,7 @@ export default function PortfolioSection() {
               Real Results
             </span>
             <h2 className="font-display font-extrabold text-2xl lg:text-4xl text-foreground mb-2 leading-tight">
-              What Our Clients{" "}
+              Clients Kya{" "}
               <span
                 className="bg-clip-text text-transparent"
                 style={{
@@ -505,7 +653,8 @@ export default function PortfolioSection() {
                 }}
               >
                 Actually Achieve
-              </span>
+              </span>{" "}
+              Karte Hain
             </h2>
             <p className="text-muted-foreground text-sm lg:text-base max-w-md mx-auto">
               A website isn't a cost — it's your highest-ROI investment.
